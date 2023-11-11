@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sun / Star with procedural textures
+* source:	https://sketchfab.com/3d-models/sun-star-with-procedural-textures-7fc327e768574566b90fbb7b7602d289
+* author:	imperioame (https://sketchfab.com/imperioame)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sun / Star with procedural textures" (https://sketchfab.com/3d-models/sun-star-with-procedural-textures-7fc327e768574566b90fbb7b7602d289) by imperioame (https://sketchfab.com/imperioame) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

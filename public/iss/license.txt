@@ -1,0 +1,11 @@
+Model Information:
+* title:	ISS Stationary
+* source:	https://sketchfab.com/3d-models/iss-stationary-7ee2fccce9c3476e94d05ca3e61250c7
+* author:	69 max (https://sketchfab.com/25MArndt12)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "ISS Stationary" (https://sketchfab.com/3d-models/iss-stationary-7ee2fccce9c3476e94d05ca3e61250c7) by 69 max (https://sketchfab.com/25MArndt12) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
