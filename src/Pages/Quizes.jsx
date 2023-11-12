@@ -2,20 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 
-const Main = styled.div`
-  background-color: #e00000;
-  height: 100vh;
-  width: 100vw;
-`;
-
-const Lessons = () => {
+const Quizes = () => {
+  const Main = styled.div`
+    background-color: #e00000;
+    height: 100vh;
+    width: 100vw;
+  `;
   return (
     <Main>
-      <h1>Lessons</h1>
+      <h1>Quizes</h1>
 
       <NavBar />
     </Main>
   );
 };
 
-export default Lessons;
+export default Quizes;
