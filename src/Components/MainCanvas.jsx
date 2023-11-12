@@ -29,7 +29,7 @@ const MainCanvas = () => {
         position={[0, 0, 0]}
       />
       <ambientLight intensity={0.5} />
-      <group position={[-80, 0, 0]} scale={1.5}>
+      <group position={[-80, 0, 0]} scale={1.7}>
         <Sun />
         <Mercury />
         <Venus />

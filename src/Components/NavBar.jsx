@@ -15,8 +15,6 @@ const Navigation = styled.div`
   background-color: transparent;
   position: absolute;
   bottom: 0;
-  left: 50vw;
-  transform: translateX(-50%);
   z-index: 10;
 
   height: 120px;
@@ -26,25 +24,27 @@ const Navigation = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const POTD = styled.div``;
 const List = styled.ul`
-  height: 100px;
-  width: 700px;
+  height: 110px;
+  width: 80%;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   z-index: 2;
-  background-color: #ffffff;
-  border-radius: 10px;
+  background-color: rgba(45, 64, 89, 0.2);
+  border-radius: 15px;
   padding: 0 50px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
 
   li {
     list-style: none;
     position: relative;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,17 +67,13 @@ const List = styled.ul`
   span {
     position: relative;
     display: block;
-    font-size: 60px;
-    color: pink;
+    font-size: 40px;
+    color: #decdc3;
   }
-
-  /* li.active span {
-    transform: translateY(-50px);
-  } */
 
   p {
     position: absolute;
-    color: #e7687d;
+    color: #ea5455;
     font-weight: 600;
     letter-spacing: 3px;
     font-size: 20px;
@@ -85,19 +81,16 @@ const List = styled.ul`
     top: 60px;
   }
 
-  /* li.active p {
-    opacity: 1;
-  } */
-
   .indicator {
-    height: calc(100% + 20px);
-    width: calc(100% + 20px);
-    background-color: #000000;
+    height: 80px;
+    width: 80px;
+    box-sizing: content-box;
+    background-color: rgba(45, 64, 89, 0.7);
     position: absolute;
     z-index: 1;
     border-radius: 50%;
-    top: calc(-50% - 12px);
-    border: solid #fff 15px;
+    top: calc(-50% - 20px);
+    border: solid #ea5454 10px;
   }
 `;
 
@@ -106,21 +99,25 @@ const NavBar = () => {
 
   const navs = [
     {
+      id: 1,
       path: "/",
       icon: <FontAwesomeIcon icon={faEarthAmericas} />,
       text: "Home",
     },
     {
+      id: 2,
       path: "/lessons",
       icon: <FontAwesomeIcon icon={faScroll} />,
       text: "Lessons",
     },
     {
+      id: 3,
       path: "/history",
       icon: <FontAwesomeIcon icon={faNewspaper} />,
       text: "History",
     },
     {
+      id: 4,
       path: "/quizes",
       icon: <FontAwesomeIcon icon={faFeatherPointed} />,
       text: "Quizes",
@@ -131,18 +128,26 @@ const NavBar = () => {
   const textControls = useAnimationControls();
 
   useEffect(() => {
-    iconControls.start({ translateY: -50, transition: { duration: 0.5 } });
-  }, []);
+    iconControls.start({
+      translateY: -50,
+      transition: { ease: "easeInOut", duration: 0.5 },
+    });
+  }, [pathname]);
   useEffect(() => {
-    textControls.start({ opacity: 1 });
-  }, []);
+    textControls.start({
+      opacity: 1,
+      transition: { ease: "easeInOut", duration: 0.5 },
+    });
+  }, [pathname]);
 
   return (
     <Navigation>
-      <POTD></POTD>
       <List>
         {navs.map((nav) => (
-          <li className={`${pathname === nav.path ? "active" : ""}`}>
+          <li
+            className={`${pathname === nav.path ? "active" : ""}`}
+            key={nav.id}
+          >
             <Link to={nav.path}>
               {
                 <motion.span
@@ -166,36 +171,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-/*<li className={`${pathname === "/" ? "active" : ""}`}>
-          <Link to={"/"}>
-            <span>
-              <FontAwesomeIcon icon={faEarthAmericas} />
-            </span>
-            <p>Home</p>
-          </Link>
-        </li>
-        <li className={`${pathname === "/lessons" ? "active" : ""}`}>
-          <Link to={"/lessons"}>
-            <span>
-              <FontAwesomeIcon icon={faScroll} />
-            </span>
-            <p>Lessons</p>
-          </Link>
-        </li>
-        <li className={`${pathname === "/history" ? "active" : ""}`}>
-          <Link to={"/history"}>
-            <span>
-              <FontAwesomeIcon icon={faNewspaper} />
-            </span>
-            <p>History</p>
-          </Link>
-        </li>
-        <li className={`${pathname === "/quizes" ? "active" : ""}`}>
-          <Link to={"/quizes"}>
-            <span>
-              <FontAwesomeIcon icon={faFeatherPointed} />
-            </span>
-            <p>Quizes</p>
-          </Link>
-        </li> */
