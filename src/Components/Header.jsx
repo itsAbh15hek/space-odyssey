@@ -14,7 +14,7 @@ const Header = () => {
     justify-content: space-around;
     z-index: 2;
     border-radius: 15px;
-    margin: 10px auto 40px;
+    margin: 30px auto 20px;
     /* background-color: rgba(45, 64, 89, 0.6);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5); */
