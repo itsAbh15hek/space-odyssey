@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import StarField from "../ModelComponents/StarField";
-import { OrbitControls, useHelper } from "@react-three/drei";
+import { Loader, OrbitControls, useHelper } from "@react-three/drei";
 import Sun from "../ModelComponents/Sun";
 import Mercury from "../ModelComponents/Mercury";
 import Venus from "../ModelComponents/Venus";
@@ -17,31 +17,37 @@ const MainCanvas = () => {
   const directionalLightRef = useRef();
 
   return (
-    <Canvas>
-      <Perf />
-      <color attach="background" args={["black"]} />
-      <OrbitControls />
-      <pointLight
-        color={0xffffff}
-        distance={0}
-        intensity={6}
-        decay={0}
-        position={[0, 0, 0]}
-      />
-      <ambientLight intensity={0.5} />
-      <group position={[-80, 0, 0]} scale={1.5}>
-        <Sun />
-        <Mercury />
-        <Venus />
-        <Earth />
-        <Mars />
-        <Jupiter />
-        <Saturn />
-        <Uranus />
-        <Neptune />
-      </group>
-      <StarField />
-    </Canvas>
+    <>
+      {" "}
+      <Canvas>
+        <Perf />
+        <color attach="background" args={["black"]} />
+        <OrbitControls />
+        <pointLight
+          color={0xffffff}
+          distance={0}
+          intensity={6}
+          decay={0}
+          position={[0, 0, 0]}
+        />
+        <ambientLight intensity={0.5} />
+        <Suspense fallback={null}>
+          <group position={[-80, 0, 0]} scale={1.5}>
+            <Sun />
+            <Mercury />
+            <Venus />
+            <Earth />
+            <Mars />
+            <Jupiter />
+            <Saturn />
+            <Uranus />
+            <Neptune />
+          </group>
+          <StarField />
+        </Suspense>
+      </Canvas>
+      <Loader />
+    </>
   );
 };
 
