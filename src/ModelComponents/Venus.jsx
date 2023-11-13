@@ -16,4 +16,4 @@ const Venus = () => {
   );
 };
 
-export default Venus;
+export default React.memo(Venus);

@@ -16,4 +16,4 @@ const Uranus = () => {
   );
 };
 
-export default Uranus;
+export default React.memo(Uranus);

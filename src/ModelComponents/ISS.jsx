@@ -17,4 +17,4 @@ const ISS = () => {
   );
 };
 
-export default ISS;
+export default React.memo(ISS);

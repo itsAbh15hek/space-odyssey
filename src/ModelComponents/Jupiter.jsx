@@ -16,4 +16,4 @@ const Jupiter = () => {
   );
 };
 
-export default Jupiter;
+export default React.memo(Jupiter);

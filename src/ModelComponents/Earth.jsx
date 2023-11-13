@@ -23,4 +23,4 @@ const Earth = () => {
   );
 };
 
-export default Earth;
+export default React.memo(Earth);

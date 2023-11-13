@@ -16,4 +16,4 @@ const Mars = () => {
   );
 };
 
-export default Mars;
+export default React.memo(Mars);

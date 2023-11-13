@@ -16,4 +16,4 @@ const Mercury = () => {
   );
 };
 
-export default Mercury;
+export default React.memo(Mercury);

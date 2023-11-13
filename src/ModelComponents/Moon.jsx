@@ -18,4 +18,4 @@ const Moon = () => {
   );
 };
 
-export default Moon;
+export default React.memo(Moon);

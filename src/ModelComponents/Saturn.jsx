@@ -22,4 +22,4 @@ const Saturn = () => {
   );
 };
 
-export default Saturn;
+export default React.memo(Saturn);

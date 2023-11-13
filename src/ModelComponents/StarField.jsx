@@ -16,23 +16,23 @@ const StarField = () => {
       <Stars
         radius={100}
         depth={50}
-        count={600}
-        factor={8}
+        count={800}
+        factor={9}
         saturation={0}
         fade
-        speed={1}
+        speed={1.2}
       />
       <Stars
         radius={100}
         depth={50}
         count={800}
-        factor={3}
+        factor={4}
         saturation={0}
         fade
-        speed={1.2}
+        speed={1.5}
       />
     </mesh>
   );
 };
 
-export default StarField;
+export default React.memo(StarField);

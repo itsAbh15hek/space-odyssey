@@ -16,4 +16,4 @@ const Neptune = () => {
   );
 };
 
-export default Neptune;
+export default React.memo(Neptune);
