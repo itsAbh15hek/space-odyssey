@@ -4,17 +4,17 @@ import Home from "./Pages/Home";
 import Lessons from "./Pages/Lessons";
 import History from "./Pages/History";
 import Quizes from "./Pages/Quizes";
-
-import studio from "@theatre/studio";
-import extension from "@theatre/r3f/dist/extension";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import FourOFour from "./Pages/FourOFour";
 import Account from "./Pages/Account";
 import ResetPassword from "./Pages/ResetPassword";
 
-studio.extend(extension);
-studio.initialize();
+// import studio from "@theatre/studio";
+// import extension from "@theatre/r3f/dist/extension";
+
+// studio.extend(extension);
+// studio.initialize();
 
 function App() {
   const user = false;

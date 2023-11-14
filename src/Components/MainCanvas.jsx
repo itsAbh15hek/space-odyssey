@@ -7,6 +7,7 @@ import {
   useHelper,
   ScrollControls,
   useScroll,
+  Scroll,
 } from "@react-three/drei";
 import { getProject, val } from "@theatre/core";
 import {
@@ -26,8 +27,12 @@ import Saturn from "../ModelComponents/Saturn";
 import Neptune from "../ModelComponents/Neptune";
 import Uranus from "../ModelComponents/Uranus";
 import { Perf } from "r3f-perf";
+import HomeTextPageContainer from "../AnimatedComponents/HomeTextPageContainer";
+import prodAni from "../assets/Scroll Animation-theatr.json";
 const MainCanvas = () => {
-  const sheet = getProject("Scroll Animation").sheet("Scene");
+  const sheet = getProject("Production Animation", {
+    state: prodAni,
+  }).sheet("Scene");
 
   return (
     <>
@@ -36,10 +41,13 @@ const MainCanvas = () => {
         gl={{ physicallyCorrectLights: true, preserveDrawingBuffer: true }}
       >
         {/* <Perf /> */}
-        <ScrollControls pages={10} distance={1.5}>
+        <ScrollControls pages={10}>
           <SheetProvider sheet={sheet}>
             <Scene />
           </SheetProvider>
+          <Scroll html>
+            <HomeTextPageContainer />
+          </Scroll>
         </ScrollControls>
       </Canvas>
       <Loader />
