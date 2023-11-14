@@ -10,12 +10,14 @@ const Container = styled.div`
 
   .hero {
     letter-spacing: 10px;
-    font-size: 80px;
-    padding: 40px 80px;
-    background-color: rgba(45, 64, 89, 0.5);
+    font-size: 120px;
+    padding: 60px 100px;
+    text-shadow: 2px 2px 2px black;
+    background-color: rgba(45, 64, 89, 0.4);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
+    border-radius: 5px;
   }
 `;
 const HomeText = ({ el }) => {
