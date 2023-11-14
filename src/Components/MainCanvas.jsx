@@ -1,7 +1,20 @@
 import React, { Suspense, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import StarField from "../ModelComponents/StarField";
-import { Loader, OrbitControls, useHelper } from "@react-three/drei";
+import {
+  Loader,
+  OrbitControls,
+  useHelper,
+  ScrollControls,
+  useScroll,
+} from "@react-three/drei";
+import { getProject, val } from "@theatre/core";
+import {
+  editable as e,
+  SheetProvider,
+  PerspectiveCamera,
+  useCurrentSheet,
+} from "@theatre/r3f";
 import Sun from "../ModelComponents/Sun";
 import Mercury from "../ModelComponents/Mercury";
 import Venus from "../ModelComponents/Venus";
@@ -14,37 +27,20 @@ import Neptune from "../ModelComponents/Neptune";
 import Uranus from "../ModelComponents/Uranus";
 import { Perf } from "r3f-perf";
 const MainCanvas = () => {
-  const directionalLightRef = useRef();
+  const sheet = getProject("Scroll Animation").sheet("Scene");
 
   return (
     <>
       {" "}
-      <Canvas>
-        <Perf />
-        <color attach="background" args={["black"]} />
-        <OrbitControls />
-        <pointLight
-          color={0xffffff}
-          distance={0}
-          intensity={6}
-          decay={0}
-          position={[0, 0, 0]}
-        />
-        <ambientLight intensity={0.5} />
-        <Suspense fallback={null}>
-          <group position={[-80, 0, 0]} scale={1.5}>
-            <Sun />
-            <Mercury />
-            <Venus />
-            <Earth />
-            <Mars />
-            <Jupiter />
-            <Saturn />
-            <Uranus />
-            <Neptune />
-          </group>
-          <StarField />
-        </Suspense>
+      <Canvas
+        gl={{ physicallyCorrectLights: true, preserveDrawingBuffer: true }}
+      >
+        {/* <Perf /> */}
+        <ScrollControls pages={10} distance={1.5}>
+          <SheetProvider sheet={sheet}>
+            <Scene />
+          </SheetProvider>
+        </ScrollControls>
       </Canvas>
       <Loader />
     </>
@@ -52,3 +48,46 @@ const MainCanvas = () => {
 };
 
 export default MainCanvas;
+
+const Scene = () => {
+  const sheet = useCurrentSheet();
+  const scroll = useScroll();
+  useFrame(() => {
+    const sequenceLength = val(sheet.sequence.pointer.length);
+    sheet.sequence.position = scroll.offset * sequenceLength;
+  });
+  return (
+    <>
+      <color attach="background" args={["black"]} />
+      {/* <OrbitControls /> */}
+      <PerspectiveCamera
+        theatreKey="Camera"
+        makeDefault
+        position={[0, 0, 0]}
+        fov={90}
+      />
+      <pointLight
+        color={0xffffff}
+        distance={0}
+        intensity={6}
+        decay={0}
+        position={[0, 0, 0]}
+      />
+      <ambientLight intensity={0.5} />
+      <Suspense fallback={null}>
+        <group position={[-80, 0, 0]} scale={1.5}>
+          <Sun />
+          <Mercury />
+          <Venus />
+          <Earth />
+          <Mars />
+          <Jupiter />
+          <Saturn />
+          <Uranus />
+          <Neptune />
+        </group>
+        <StarField />
+      </Suspense>
+    </>
+  );
+};

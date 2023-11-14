@@ -12,6 +12,10 @@ font-family: 'Orbitron', sans-serif; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #decdc3;
+  
+  font-family: 'Exo 2', sans-serif ;
+  
 }
 
 html, body, #root{
@@ -20,6 +24,7 @@ html, body, #root{
   margin: 0;
   padding: 0;
   overflow: hidden;
+  
 }
 body{
   background-color: #000000;

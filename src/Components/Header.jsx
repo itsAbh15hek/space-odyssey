@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 const Header = () => {
   const Main = styled.div`
-    font-family: "Orbitron", sans-serif;
-
     height: 80px;
     width: 95%;
     position: relative;
@@ -15,9 +13,6 @@ const Header = () => {
     z-index: 2;
     border-radius: 15px;
     margin: 30px auto 20px;
-    /* background-color: rgba(45, 64, 89, 0.6);
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5); */
     h1 {
       color: #ea5455;
       text-transform: uppercase;
@@ -25,6 +20,8 @@ const Header = () => {
       font-weight: 800;
       font-size: 70px;
       text-align: center;
+
+      font-family: "Orbitron", sans-serif;
     }
 
     @media (max-width: 1500px) {

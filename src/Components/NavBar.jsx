@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCircleUser,
   faEarthAmericas,
   faFeatherPointed,
   faNewspaper,
@@ -11,7 +12,6 @@ import {
 import { motion, useAnimationControls } from "framer-motion";
 
 const Navigation = styled.div`
-  font-family: "Expletus Sans", sans-serif;
   background-color: transparent;
   position: absolute;
   bottom: 0;
@@ -79,6 +79,8 @@ const List = styled.ul`
     font-size: 20px;
     opacity: 0;
     top: 60px;
+
+    font-family: "Expletus Sans", sans-serif;
   }
 
   .indicator {
@@ -96,6 +98,7 @@ const List = styled.ul`
 
 const NavBar = () => {
   const { pathname } = useLocation();
+  const user = false;
 
   const navs = [
     {
@@ -121,6 +124,12 @@ const NavBar = () => {
       path: "/quizes",
       icon: <FontAwesomeIcon icon={faFeatherPointed} />,
       text: "Quizes",
+    },
+    {
+      id: 5,
+      path: `/${user ? "account" : "login"}`,
+      icon: <FontAwesomeIcon icon={faCircleUser} />,
+      text: "Account",
     },
   ];
 
