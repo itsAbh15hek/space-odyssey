@@ -31,12 +31,12 @@ const Header = () => {
       }
     }
     @media (max-width: 1030px) {
-      height: 60px;
+      height: 80px;
       width: 100%;
       margin: 10px 0 0;
       h1 {
         letter-spacing: 30px;
-        font-size: 40px;
+        font-size: 50px;
       }
     }
   `;

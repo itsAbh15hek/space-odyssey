@@ -26,7 +26,6 @@ const Main = styled.div`
 
   @media (max-width: 1030px) {
     height: calc(95vh - 150px);
-    background-color:red;
     width: 100%;
     margin: 0;
   }

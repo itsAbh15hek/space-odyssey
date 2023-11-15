@@ -32,6 +32,10 @@ const Form = styled.form`
     color: #ea5455;
     margin-bottom: 40px;
   }
+  @media(max-width:1030px){
+    
+    transform:scale(0.75);
+  }
 `;
 const Input = styled.input`
   width: 600px;

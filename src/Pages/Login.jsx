@@ -34,6 +34,11 @@ const Form = styled.form`
   span {
     margin: 10px;
   }
+
+  @media(max-width:1030px){
+    
+    transform:scale(0.9);
+  }
 `;
 const Input = styled.input`
   width: 600px;
