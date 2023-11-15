@@ -28,18 +28,17 @@ const Form = styled.form`
 
   h1 {
     font-family: "Expletus Sans", sans-serif;
-    font-size: 80px;
+    font-size: 60px;
     color: #ea5455;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
-  @media(max-width:1030px){
-    
-    transform:scale(0.75);
+  @media (max-width: 1030px) {
+    transform: scale(0.75);
   }
 `;
 const Input = styled.input`
   width: 600px;
-  padding: 20px 30px;
+  padding: 10px 30px;
   border-radius: 30px;
   font-size: 20px;
   margin: 15px;
@@ -49,7 +48,7 @@ const Input = styled.input`
 `;
 const Button = styled.button`
   margin: 20px;
-  padding: 20px 40px;
+  padding: 15px 40px;
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
