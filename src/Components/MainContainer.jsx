@@ -24,9 +24,9 @@ const Main = styled.div`
     overflow-y: auto;
   }
 
-  @media (max-width: 950px) {
-    height: 150px;
-    height: calc(95vh - 250px);
+  @media (max-width: 1030px) {
+    height: calc(95vh - 150px);
+    background-color:red;
     width: 100%;
     margin: 0;
   }

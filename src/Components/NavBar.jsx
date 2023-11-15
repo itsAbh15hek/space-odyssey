@@ -23,6 +23,10 @@ const Navigation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media(max-width: 1030px){
+    height: 100px;
+  }
 `;
 const List = styled.ul`
   height: 110px;
@@ -93,6 +97,11 @@ const List = styled.ul`
     border-radius: 50%;
     top: calc(-50% - 20px);
     border: solid #ea5454 10px;
+  }
+
+  @media(max-width: 1030px) {
+    transform:scale(.8);
+    
   }
 `;
 

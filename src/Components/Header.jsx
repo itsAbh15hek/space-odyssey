@@ -30,13 +30,13 @@ const Header = () => {
         font-size: 50px;
       }
     }
-    @media (max-width: 950px) {
-      height: 150px;
+    @media (max-width: 1030px) {
+      height: 60px;
       width: 100%;
-      margin: 0;
+      margin: 10px 0 0;
       h1 {
         letter-spacing: 30px;
-        font-size: 50px;
+        font-size: 40px;
       }
     }
   `;
