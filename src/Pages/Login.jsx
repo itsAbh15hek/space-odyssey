@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -35,9 +36,8 @@ const Form = styled.form`
     margin: 10px;
   }
 
-  @media(max-width:1030px){
-    
-    transform:scale(0.9);
+  @media (max-width: 1030px) {
+    transform: scale(0.9);
   }
 `;
 const Input = styled.input`
@@ -61,6 +61,15 @@ const Button = styled.button`
 `;
 
 const Login = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({});
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
@@ -68,8 +77,18 @@ const Login = () => {
       <MainContainer>
         <Form action="" className="login">
           <h1>Login</h1>
-          <Input type="text" placeholder="Username" />
-          <Input type="text" placeholder="Password" />
+          <Input
+            onChange={(e) => handleChange(e)}
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+          <Input
+            onChange={(e) => handleChange(e)}
+            type="text"
+            name="password"
+            placeholder="Password"
+          />
           <Button type="submit">Login</Button>
           <span>
             <Link to={"/resetpassword"}>Forgot Password?</Link>
