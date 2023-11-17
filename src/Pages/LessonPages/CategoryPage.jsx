@@ -56,6 +56,12 @@ const CategoryPage = () => {
   useEffect(() => {
     getData();
   }, []);
+  const images = {
+    celestialObjects:
+      "https://img.freepik.com/free-photo/glowing-spaceship-orbits-planet-starry-galaxy-generated-by-ai_188544-9655.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph",
+    missions:
+      "https://img.freepik.com/free-photo/rocket-flying-through-space_23-2150378583.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=ais",
+  };
 
   return (
     <Main>
@@ -76,6 +82,11 @@ const CategoryPage = () => {
                 ))
               : lessonCategory.map((lesson) => (
                   <ListItem
+                    image={
+                      pathname === "missions"
+                        ? images.missions
+                        : images.celestialObjects
+                    }
                     name={lesson.DisplayName}
                     path={`${pathname}/${lesson.id}`}
                   />

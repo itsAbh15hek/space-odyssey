@@ -21,6 +21,9 @@ const Container = styled(motion.div)`
   font-size: 30px;
   letter-spacing: 2px;
   user-select: none;
+  background: url(${(props) => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
   a {
     height: 100%;
     width: 100%;
@@ -31,12 +34,15 @@ const Container = styled(motion.div)`
     justify-content: space-around;
     z-index: 2;
     color: #ea5454f9;
+    text-shadow: 1px 1px 2px black;
     text-decoration: none;
+    background: transparent;
   }
 `;
-const ListItem = ({ name, path }) => {
+const ListItem = ({ name, path, image }) => {
   return (
     <Container
+      image={image}
       whileHover={{
         scale: 1.05,
         transition: { duration: 0.1 },

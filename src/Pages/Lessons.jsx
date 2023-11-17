@@ -49,6 +49,9 @@ const Lessons = () => {
         {status === 0 &&
           lessons.map((lesson) => (
             <ListItem
+              image={
+                "https://img.freepik.com/free-photo/space-galaxy-background_53876-93121.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph"
+              }
               key={lesson.id}
               name={lesson.DisplayName}
               path={lesson.id}
