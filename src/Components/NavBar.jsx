@@ -24,7 +24,7 @@ const Navigation = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media(max-width: 1030px){
+  @media (max-width: 1030px) {
     height: 100px;
   }
 `;
@@ -99,14 +99,14 @@ const List = styled.ul`
     border: solid #ea5454 10px;
   }
 
-  @media(max-width: 1030px) {
-    transform:scale(.8);
-    
+  @media (max-width: 1030px) {
+    transform: scale(0.8);
   }
 `;
 
 const NavBar = () => {
-  const { pathname } = useLocation();
+  const Location = useLocation();
+  const pathname = `/${Location.pathname.split("/")[1]}`;
   const user = false;
 
   const navs = [
