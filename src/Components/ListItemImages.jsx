@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
   height: 300px;
@@ -15,11 +16,18 @@ const Container = styled.div`
   border-top: 1px solid #decdc3;
   border-left: 1px solid #decdc3;
   margin: 20px auto;
-  padding: 5px 20px;
   font-size: 30px;
   letter-spacing: 2px;
   user-select: none;
-
+  a {
+    width: 100%;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+  }
   img {
     height: 200px;
     width: 250px;
@@ -37,14 +45,18 @@ const Text = styled.div`
     font-size: 15px;
   }
 `;
-const ListItemImages = ({ heading, text, image }) => {
+const ListItemImages = ({ path, heading, text, image }) => {
+  const Location = useLocation();
+  const pathname = Location.pathname;
   return (
     <Container>
-      <Text>
-        <h2>{heading}</h2>
-        <p>{text}</p>
-      </Text>
-      <img src={image} />
+      <Link to={`${pathname}/${path}`}>
+        <Text>
+          <h2>{heading}</h2>
+          <p>{text}</p>
+        </Text>
+        <img src={image} />
+      </Link>
     </Container>
   );
 };

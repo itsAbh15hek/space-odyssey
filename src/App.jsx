@@ -11,6 +11,7 @@ import Account from "./Pages/Account";
 import ResetPassword from "./Pages/ResetPassword";
 import { useSelector } from "react-redux";
 import CategoryPage from "./Pages/LessonPages/CategoryPage";
+import ItemDetails from "./Pages/LessonPages/ItemDetails";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -28,6 +29,7 @@ function App() {
       <Route path="/quizes" element={<Quizes />} />
       <Route path="/login" element={currentUser ? <Account /> : <Login />} />
       <Route path="/lessons/:id" element={<CategoryPage />} />
+      <Route path="/lessons/:id/:id" element={<ItemDetails />} />
       <Route
         path="/register"
         element={currentUser ? <Account /> : <Register />}

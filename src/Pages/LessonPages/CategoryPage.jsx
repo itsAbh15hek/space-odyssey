@@ -47,7 +47,6 @@ const CategoryPage = () => {
       setLessonCategory(properData);
       console.log("madarchod", properData);
       setStatus(0);
-      console.log("data", data);
     } catch (error) {
       console.log("error", error);
       setStatus(-1);
@@ -56,12 +55,6 @@ const CategoryPage = () => {
   useEffect(() => {
     getData();
   }, []);
-  const images = {
-    celestialObjects:
-      "https://img.freepik.com/free-photo/glowing-spaceship-orbits-planet-starry-galaxy-generated-by-ai_188544-9655.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph",
-    missions:
-      "https://img.freepik.com/free-photo/rocket-flying-through-space_23-2150378583.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=ais",
-  };
 
   return (
     <Main>
@@ -72,23 +65,22 @@ const CategoryPage = () => {
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
-            {pathname === "events"
+            {pathname === "celestialobjects"
               ? lessonCategory.map((lesson) => (
-                  <ListItemImages
-                    heading={lesson.DisplayName}
-                    text={lesson.subHeading}
-                    image={lesson.image}
-                  />
-                ))
-              : lessonCategory.map((lesson) => (
                   <ListItem
                     image={
-                      pathname === "missions"
-                        ? images.missions
-                        : images.celestialObjects
+                      "https://img.freepik.com/free-photo/glowing-star-field-dark-night-sky-generated-by-ai_24640-130990.jpg?t=st=1700327978~exp=1700331578~hmac=67c8c86b4741c792545627caebdf3a257a247f1ce764e9b0d875863bea8f2e8e&w=1380"
                     }
                     name={lesson.DisplayName}
                     path={`${pathname}/${lesson.id}`}
+                  />
+                ))
+              : lessonCategory.map((lesson) => (
+                  <ListItemImages
+                    path={lesson.id}
+                    heading={lesson.DisplayName}
+                    text={lesson.subHeading}
+                    image={lesson.image}
                   />
                 ))}
           </ScrollableComponent>
