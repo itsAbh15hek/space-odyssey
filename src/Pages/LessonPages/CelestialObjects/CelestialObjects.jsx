@@ -67,7 +67,7 @@ const CelestialObjects = () => {
               <ListItem
                 key={lesson.id}
                 image={
-                  "https://img.freepik.com/free-photo/glowing-star-field-dark-night-sky-generated-by-ai_24640-130990.jpg?t=st=1700327978~exp=1700331578~hmac=67c8c86b4741c792545627caebdf3a257a247f1ce764e9b0d875863bea8f2e8e&w=1380"
+                  "https://img.freepik.com/free-photo/glowing-satellite-orbits-planet-star-filled-galaxy-generated-by-ai_188544-9664.jpg?w=1380&t=st=1700489717~exp=1700490317~hmac=e9a8a7994ea279411e77c275350a29bd3dd5e17d430adb0ca71118a3f5ff278d"
                 }
                 name={lesson.DisplayName}
                 path={`${pathname}/${lesson.id}`}

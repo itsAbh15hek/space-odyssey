@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import Loader from "../../Components/Loader";
 import ISSComponents from "../../Components/MissionSpecific.jsx/ISSComponents";
+import RoverComponent from "../../Components/MissionSpecific.jsx/RoverComponent";
 
 const Main = styled.div`
   height: 100vh;
@@ -79,6 +80,9 @@ const ItemDetails = () => {
             {itemData?.info && <Info>{itemData.info}</Info>}
             {itemData?.facts && <Info>{itemData.facts}</Info>}
             {path === "ISS" && <ISSComponents />}
+            {path === "Mars_rover" && (
+              <RoverComponent roverList={itemData.marsAdditional} />
+            )}
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}

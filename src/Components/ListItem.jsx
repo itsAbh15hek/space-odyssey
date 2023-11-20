@@ -24,6 +24,7 @@ const Container = styled(motion.div)`
   background: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: 0% 50%;
   a {
     height: 100%;
     width: 100%;
@@ -34,9 +35,9 @@ const Container = styled(motion.div)`
     justify-content: space-around;
     z-index: 2;
     color: #ea5454f9;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 3px 3px 5px black;
     text-decoration: none;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.5);
   }
 `;
 const ListItem = ({ name, path, image }) => {

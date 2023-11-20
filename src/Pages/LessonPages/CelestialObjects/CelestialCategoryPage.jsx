@@ -68,7 +68,7 @@ const CelestialCategoryPage = () => {
               <ListItem
                 key={lesson.id}
                 image={
-                  "https://img.freepik.com/free-photo/spaceship-orbits-dark-galaxy-exploring-deep-space-discovery-generated-by-ai_24640-93271.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph"
+                  "https://img.freepik.com/free-photo/spaceship-orbits-dark-galaxy-glowing-blue-comet-generated-by-ai_188544-9662.jpg?w=1380&t=st=1700488278~exp=1700488878~hmac=90afcd8c877cfcf35d9b358b9d1c7ce035b6b91093b2a683c1d4c0d9ca0e5490"
                 }
                 name={lesson.englishName}
                 path={`celestialobjects/${pathname}/${lesson.id}`}

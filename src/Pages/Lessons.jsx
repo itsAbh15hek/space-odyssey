@@ -50,7 +50,7 @@ const Lessons = () => {
           lessons.map((lesson) => (
             <ListItem
               image={
-                "https://img.freepik.com/free-photo/space-galaxy-background_53876-93121.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph"
+                "https://img.freepik.com/free-photo/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg?w=1380&t=st=1700488570~exp=1700489170~hmac=8ba5ad7121161d05b573607efc41458719265e2bf73bdd565d83726f8440af06"
               }
               key={lesson.id}
               name={lesson.DisplayName}

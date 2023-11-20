@@ -11,7 +11,7 @@ const Container = styled.div`
   justify-content: space-around;
   z-index: 2;
   color: #ea5454f9;
-  background-color: rgba(45, 64, 89, 0.3);
+  background-color: rgba(45, 64, 89, 0.2);
   border-radius: 15px;
   border-top: 1px solid #decdc3;
   border-left: 1px solid #decdc3;
