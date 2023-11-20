@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
 import Lessons from "./Pages/Lessons";
-import History from "./Pages/History";
+import News from "./Pages/News";
 import Quizes from "./Pages/Quizes";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -12,6 +12,9 @@ import ResetPassword from "./Pages/ResetPassword";
 import { useSelector } from "react-redux";
 import CategoryPage from "./Pages/LessonPages/CategoryPage";
 import ItemDetails from "./Pages/LessonPages/ItemDetails";
+import CelestialObjects from "./Pages/LessonPages/CelestialObjects/CelestialObjects";
+import CelestialCategoryPage from "./Pages/LessonPages/CelestialObjects/CelestialCategoryPage";
+import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDetails";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -25,10 +28,19 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/lessons" element={<Lessons />} />
-      <Route path="/history" element={<History />} />
+      <Route path="/news" element={<News />} />
       <Route path="/quizes" element={<Quizes />} />
       <Route path="/login" element={currentUser ? <Account /> : <Login />} />
       <Route path="/lessons/:id" element={<CategoryPage />} />
+      <Route path="/lessons/celestialobjects" element={<CelestialObjects />} />
+      <Route
+        path="/lessons/celestialobjects/:id"
+        element={<CelestialCategoryPage />}
+      />
+      <Route
+        path="/lessons/celestialobjects/:id/:id"
+        element={<CelestialDetails />}
+      />
       <Route path="/lessons/:id/:id" element={<ItemDetails />} />
       <Route
         path="/register"

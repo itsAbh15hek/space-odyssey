@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "../../Components/Header";
-import NavBar from "../../Components/NavBar";
-import MainContainer from "../../Components/MainContainer";
-import ScrollableComponent from "../../Components/ScrollableComponent";
+import Header from "../../../Components/Header";
+import NavBar from "../../../Components/NavBar";
+import MainContainer from "../../../Components/MainContainer";
+import ScrollableComponent from "../../../Components/ScrollableComponent";
 import { useLocation } from "react-router-dom";
-import { publicRequest } from "../../requestMethods";
-import Loader from "../../Components/Loader";
-import ISSComponents from "../../Components/MissionSpecific.jsx/ISSComponents";
+import { publicRequest } from "../../../requestMethods";
+import Loader from "../../../Components/Loader";
 
 const Main = styled.div`
   height: 100vh;
@@ -41,7 +40,7 @@ const Info = styled.p`
   line-height: 1.5;
 `;
 
-const ItemDetails = () => {
+const CelestialDetails = () => {
   const [status, setStatus] = useState(-1);
   const [itemData, setItemData] = useState({});
   const Location = useLocation();
@@ -51,7 +50,7 @@ const ItemDetails = () => {
   const getData = async () => {
     setStatus(1);
     try {
-      console.log("first");
+      console.log("first", pathname, path);
 
       const { data } = await publicRequest.get(`${pathname}`);
       setItemData(data.data);
@@ -78,7 +77,6 @@ const ItemDetails = () => {
             {itemData?.image && <Img src={itemData.image} alt="" />}
             {itemData?.info && <Info>{itemData.info}</Info>}
             {itemData?.facts && <Info>{itemData.facts}</Info>}
-            {path === "ISS" && <ISSComponents />}
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}
@@ -88,4 +86,4 @@ const ItemDetails = () => {
   );
 };
 
-export default ItemDetails;
+export default CelestialDetails;

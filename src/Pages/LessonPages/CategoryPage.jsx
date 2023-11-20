@@ -32,20 +32,14 @@ const CategoryPage = () => {
   const pathname = Location.pathname.split("/")[2];
   const title =
     pathname === "celestialobjects" ? "celestial objects" : pathname;
-
+  console.log("first", Location.pathname);
   const getData = async () => {
     setStatus(1);
     try {
       const { data } = await publicRequest.get(`/lessons/${pathname}`);
-      const properData = data.data;
-      if (pathname === "celestialobjects") {
-        properData.shift();
-        properData.shift();
-        properData.shift();
-        properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
-      }
-      setLessonCategory(properData);
-      console.log("madarchod", properData);
+
+      setLessonCategory(data.data);
+      console.log("madarchod", data.data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
@@ -65,22 +59,22 @@ const CategoryPage = () => {
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
-            {pathname === "celestialobjects"
+            {pathname === "events" || pathname === "missions"
               ? lessonCategory.map((lesson) => (
+                  <ListItemImages
+                    path={lesson.id}
+                    heading={lesson.DisplayName}
+                    text={lesson.subHeading}
+                    image={lesson.image}
+                  />
+                ))
+              : lessonCategory.map((lesson) => (
                   <ListItem
                     image={
                       "https://img.freepik.com/free-photo/glowing-star-field-dark-night-sky-generated-by-ai_24640-130990.jpg?t=st=1700327978~exp=1700331578~hmac=67c8c86b4741c792545627caebdf3a257a247f1ce764e9b0d875863bea8f2e8e&w=1380"
                     }
                     name={lesson.DisplayName}
                     path={`${pathname}/${lesson.id}`}
-                  />
-                ))
-              : lessonCategory.map((lesson) => (
-                  <ListItemImages
-                    path={lesson.id}
-                    heading={lesson.DisplayName}
-                    text={lesson.subHeading}
-                    image={lesson.image}
                   />
                 ))}
           </ScrollableComponent>

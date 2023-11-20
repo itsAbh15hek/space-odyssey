@@ -124,7 +124,7 @@ const NavBar = () => {
     },
     {
       id: 3,
-      path: "/history",
+      path: "/news",
       icon: <FontAwesomeIcon icon={faNewspaper} />,
       text: "History",
     },

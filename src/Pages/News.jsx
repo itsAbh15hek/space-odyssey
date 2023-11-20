@@ -16,7 +16,7 @@ const Main = styled.div`
   }
 `;
 
-const History = () => {
+const News = () => {
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
@@ -28,4 +28,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default News;

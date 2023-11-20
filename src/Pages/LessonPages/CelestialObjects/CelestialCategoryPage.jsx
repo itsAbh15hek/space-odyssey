@@ -23,20 +23,21 @@ const Main = styled.div`
   }
 `;
 
-const CelestialObjects = () => {
+const CelestialCategoryPage = () => {
   const [lessonCategory, setLessonCategory] = useState([]);
   const [status, setStatus] = useState(1);
   const Location = useLocation();
-  const pathname = Location.pathname.split("/")[2];
-  const title =
-    pathname === "celestialobjects" ? "celestial objects" : pathname;
-  console.log("first", Location.pathname);
+  const pathname = Location.pathname.split("/")[3];
+
+  console.log("first", Location.pathname, pathname);
   const getData = async () => {
     setStatus(1);
     try {
-      const { data } = await publicRequest.get(`/lessons/${pathname}`);
+      const { data } = await publicRequest.get(
+        `/lessons/celestialobjects/${pathname}`
+      );
       const properData = data.data;
-      // if (pathname === "celestialobjects") {
+      // if (pathname === "celestialCategoryPage") {
       //   properData.shift();
       //   properData.shift();
       //   properData.shift();
@@ -59,7 +60,7 @@ const CelestialObjects = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ListHeader title={title} />
+        <ListHeader title={pathname} />
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
@@ -67,10 +68,10 @@ const CelestialObjects = () => {
               <ListItem
                 key={lesson.id}
                 image={
-                  "https://img.freepik.com/free-photo/glowing-star-field-dark-night-sky-generated-by-ai_24640-130990.jpg?t=st=1700327978~exp=1700331578~hmac=67c8c86b4741c792545627caebdf3a257a247f1ce764e9b0d875863bea8f2e8e&w=1380"
+                  "https://img.freepik.com/free-photo/spaceship-orbits-dark-galaxy-exploring-deep-space-discovery-generated-by-ai_24640-93271.jpg?size=626&ext=jpg&ga=GA1.1.656448082.1699822976&semt=sph"
                 }
-                name={lesson.DisplayName}
-                path={`${pathname}/${lesson.id}`}
+                name={lesson.englishName}
+                path={`celestialobjects/${pathname}/${lesson.id}`}
               />
             ))}
           </ScrollableComponent>
@@ -82,4 +83,4 @@ const CelestialObjects = () => {
   );
 };
 
-export default CelestialObjects;
+export default CelestialCategoryPage;
