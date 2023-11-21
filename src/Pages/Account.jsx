@@ -7,7 +7,7 @@ import MainContainer from "../Components/MainContainer";
 import NavBar from "../Components/NavBar";
 import ScrollableComponent from "../Components/ScrollableComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuizList } from "../redux/apiCalls/profileApiCalls";
+import { getQuizList } from "../redux/apiCalls/quizApiCalls";
 import SubmittedQuizList from "../Components/QuizSpecific/SubmittedQuizList";
 import FollowedNews from "../Components/FollowedNews";
 const Main = styled.div`
