@@ -39,6 +39,35 @@ const Header = () => {
         font-size: 50px;
       }
     }
+
+    @media (max-width: 893px) {
+      h1 {
+        letter-spacing: 25px;
+
+      }
+    }
+
+    @media (max-width: 827px) {
+      h1 {
+        font-size: 40px;
+
+      }
+    }
+
+    @media (max-width: 726px) {
+      h1 {
+        font-size: 35px;
+        letter-spacing: 20px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      h1 {
+        font-size: 30px;
+        letter-spacing: 18px;
+
+      }
+    }
   `;
   return (
     <Main>
