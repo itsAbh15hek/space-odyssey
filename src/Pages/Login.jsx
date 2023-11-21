@@ -39,7 +39,34 @@ const Form = styled.form`
 
   @media (max-width: 1030px) {
     transform: scale(0.9);
+    
   }
+  @media (max-width: 726px) {
+    transform: scale(0.8);
+    width: 95%;
+  }
+  @media (max-width: 726px) {
+    transform: scale(0.8);
+
+  }
+  @media (max-width: 660px) {
+    transform: scale(0.7);
+    
+  }
+  @media (max-width: 450px) {
+    transform: scale(0.6);
+    span {
+      font-size: 30px;
+      width: max-content;
+    }
+  }
+  @media (max-width: 380px) {
+    transform: scale(0.5);
+    h1 {
+      font-size: 120px;
+    }
+  }
+  
 `;
 const Input = styled.input`
   width: 600px;
@@ -50,15 +77,32 @@ const Input = styled.input`
   background-color: #decdc3;
   color: rgba(45, 64, 89, 1);
   outline: none;
+
+  @media (max-width: 380px) {
+    font-size: 30px;
+  }
 `;
 const Button = styled.button`
   margin: 20px;
-  padding: 20px 40px;
+  padding: 20px 50px;
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
 
   font-family: "Expletus Sans", sans-serif;
+
+  @media (max-width: 730px) {
+  }
+
+  @media (max-width: 660px) {
+    width: 600px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 25px;
+  }
+
+
 `;
 
 const Login = () => {
