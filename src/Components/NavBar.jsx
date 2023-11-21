@@ -17,6 +17,7 @@ const Navigation = styled.div`
   bottom: 0;
   z-index: 10;
 
+
   height: 120px;
   width: 100vw;
 
@@ -27,6 +28,12 @@ const Navigation = styled.div`
   @media (max-width: 1030px) {
     height: 100px;
   }
+
+  @media(max-width: 380px) {
+    width: max-width;
+  }
+
+
 `;
 const List = styled.ul`
   height: 110px;
@@ -102,12 +109,28 @@ const List = styled.ul`
   @media (max-width: 1030px) {
     transform: scale(0.8);
   }
+
+  @media (max-width: 650px) {
+    transform: scale(0.9);
+    width: 80%;
+  }
+
+  @media (max-width: 500px) {
+    transform: scale(0.9);
+    width: 95%;
+  }
+
+  @media (max-width: 390px) {
+    transform: scale(0.9)
+  }
+
+
+
 `;
 
 const NavBar = () => {
   const Location = useLocation();
   const pathname = `/${Location.pathname.split("/")[1]}`;
-  const user = false;
 
   const navs = [
     {
@@ -136,7 +159,7 @@ const NavBar = () => {
     },
     {
       id: 5,
-      path: `/${user ? "account" : "login"}`,
+      path: "/user",
       icon: <FontAwesomeIcon icon={faCircleUser} />,
       text: "Account",
     },
