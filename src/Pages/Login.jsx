@@ -4,8 +4,9 @@ import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/apiCalls/apiCalls";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -61,7 +62,10 @@ const Button = styled.button`
 `;
 
 const Login = () => {
-  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({});
@@ -69,6 +73,13 @@ const Login = () => {
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(dispatch, userData);
+  };
+  useEffect(() => {
+    if (currentUser) navigate("/user");
+  }, [currentUser]);
 
   return (
     <Main>
@@ -85,11 +96,13 @@ const Login = () => {
           />
           <Input
             onChange={(e) => handleChange(e)}
-            type="text"
+            type="password"
             name="password"
             placeholder="Password"
           />
-          <Button type="submit">Login</Button>
+          <Button type="submit" onClick={(e) => handleSubmit(e)}>
+            Login
+          </Button>
           <span>
             <Link to={"/resetpassword"}>Forgot Password?</Link>
           </span>

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Main = styled.div`
   height: 100vh;
@@ -57,6 +58,14 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const navigate = useNavigate();
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
+
+  useEffect(() => {
+    if (currentUser) navigate("/user");
+  }, []);
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>

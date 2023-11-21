@@ -23,14 +23,18 @@ import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDeta
 // studio.initialize();
 
 function App() {
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
+  console.log(currentUser);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/lessons" element={<Lessons />} />
       <Route path="/news" element={<News />} />
       <Route path="/quizes" element={<Quizes />} />
-      <Route path="/login" element={currentUser ? <Account /> : <Login />} />
+      <Route path="/user" element={<Account />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/lessons/:id" element={<CategoryPage />} />
       <Route path="/lessons/celestialobjects" element={<CelestialObjects />} />
       <Route
@@ -42,10 +46,7 @@ function App() {
         element={<CelestialDetails />}
       />
       <Route path="/lessons/:id/:id" element={<ItemDetails />} />
-      <Route
-        path="/register"
-        element={currentUser ? <Account /> : <Register />}
-      />
+      <Route path="/register" element={<Register />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
       <Route path="*" element={<FourOFour />} />
     </Routes>
