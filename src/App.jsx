@@ -15,6 +15,7 @@ import ItemDetails from "./Pages/LessonPages/ItemDetails";
 import CelestialObjects from "./Pages/LessonPages/CelestialObjects/CelestialObjects";
 import CelestialCategoryPage from "./Pages/LessonPages/CelestialObjects/CelestialCategoryPage";
 import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDetails";
+import ViewQuiz from "./Pages/QuizPages/ViewQuiz";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -30,11 +31,18 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/lessons" element={<Lessons />} />
-      <Route path="/news" element={<News />} />
-      <Route path="/quizes" element={<Quizes />} />
-      <Route path="/user" element={<Account />} />
+
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      <Route path="/user" element={<Account />} />
+
+      <Route path="/news" element={<News />} />
+
+      <Route path="/quizes" element={<Quizes />} />
+      <Route path="/quizes/view-quiz/:id" element={<ViewQuiz />} />
+
+      <Route path="/lessons" element={<Lessons />} />
       <Route path="/lessons/:id" element={<CategoryPage />} />
       <Route path="/lessons/celestialobjects" element={<CelestialObjects />} />
       <Route
@@ -46,7 +54,6 @@ function App() {
         element={<CelestialDetails />}
       />
       <Route path="/lessons/:id/:id" element={<ItemDetails />} />
-      <Route path="/register" element={<Register />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
       <Route path="*" element={<FourOFour />} />
     </Routes>

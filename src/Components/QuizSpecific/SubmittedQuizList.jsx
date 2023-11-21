@@ -70,7 +70,7 @@ const SubmittedQuizList = ({ quizList }) => {
             }}
             whileTap={{ scale: 1.03 }}
           >
-            <Link to={"/quizes/view-taken-quiz"}>
+            <Link to={`/quizes/view-quiz/${quiz._id}`}>
               <div className="details">
                 <h3>{quiz.topic}</h3>
                 <p>{quiz.date.split("T")[0]}</p>
