@@ -4,7 +4,7 @@ import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls/apiCalls";
 const Main = styled.div`
@@ -62,7 +62,10 @@ const Button = styled.button`
 `;
 
 const Login = () => {
-  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({});
@@ -74,6 +77,9 @@ const Login = () => {
     e.preventDefault();
     login(dispatch, userData);
   };
+  useEffect(() => {
+    if (currentUser) navigate("/user");
+  }, [currentUser]);
 
   return (
     <Main>
@@ -90,7 +96,7 @@ const Login = () => {
           />
           <Input
             onChange={(e) => handleChange(e)}
-            type="text"
+            type="password"
             name="password"
             placeholder="Password"
           />

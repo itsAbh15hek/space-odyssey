@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Components/Header";
 import staryBG from "../assets/staryBG.mp4";
@@ -7,8 +7,9 @@ import MainContainer from "../Components/MainContainer";
 import NavBar from "../Components/NavBar";
 import ScrollableComponent from "../Components/ScrollableComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { userRequest } from "../requestMethods";
 import { getQuizList } from "../redux/apiCalls/profileApiCalls";
+import SubmittedQuizList from "../Components/QuizSpecific/SubmittedQuizList";
+import FollowedNews from "../Components/FollowedNews";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -47,28 +48,28 @@ const UserContainer = styled.div`
     width: 200px;
     border-radius: 50%;
   }
-`;
-const QuizContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  margin-top: 20px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  h1 {
-    font-family: "Expletus Sans", sans-serif;
-    font-size: 50px;
+  a {
+    max-width: fit-content;
     color: #ea5455;
-    margin-bottom: 5px;
-    text-align: center;
-  }
-  .quizList {
-    width: 100%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #decdc3;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    &:hover {
+      padding: 10px 18px;
+      letter-spacing: 1.2px;
+    }
   }
 `;
 const Account = () => {
-  const currentUser = useSelector((state) => state.user.currentUser.data.user);
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
+  const navigate = useNavigate();
+  const quizList = useSelector((state) => state.quizes.quizList);
   console.log("currentUser", currentUser);
   const dispatch = useDispatch();
 
@@ -77,6 +78,7 @@ const Account = () => {
   };
   useEffect(() => {
     getQuizes();
+    if (!currentUser) navigate("/login");
   }, []);
 
   return (
@@ -88,8 +90,8 @@ const Account = () => {
           <UserContainer>
             <div className="credentials">
               <div>
-                <h1>{currentUser.name}</h1>
-                <h3>{currentUser.username}</h3>
+                <h1>{currentUser?.name}</h1>
+                <h3>{`@${currentUser?.username}`}</h3>
               </div>
               <Link to={"/editProfile"}>Edit Profile</Link>
             </div>
@@ -98,23 +100,8 @@ const Account = () => {
               alt=""
             />
           </UserContainer>
-          <QuizContainer>
-            <h1>Quizes Taken</h1>
-            <div className="quizList">
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-              <p>Lorem, ipsum dolor.</p>
-            </div>
-          </QuizContainer>
-          <Link to={"/"}> Take me Home </Link>
+          <FollowedNews AgencyList={currentUser?.follows} />
+          <SubmittedQuizList quizList={quizList} />
         </ScrollableComponent>
       </MainContainer>
 
