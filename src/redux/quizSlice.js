@@ -25,3 +25,8 @@ export const quizSlice = createSlice({
     },
   },
 });
+
+export const { getQuizSuccess, quizFailure, quizStart, submitQuizSuccess } =
+  quizSlice.actions;
+
+export default quizSlice.reducer;

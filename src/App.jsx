@@ -24,6 +24,7 @@ import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDeta
 
 function App() {
   const currentUser = useSelector((state) => state.user.currentUser);
+  console.log(currentUser);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
