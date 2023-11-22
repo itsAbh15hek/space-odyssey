@@ -25,12 +25,15 @@ const Main = styled.div`
 `;
 
 const UserContainer = styled.div`
-  height: 200px;
+  //height: 200px;
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas: "credential profilePick";
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
+
   .credentials {
     height: 200px;
     width: 80%;
@@ -38,6 +41,7 @@ const UserContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 0;
+    grid-area: credential;
 
     h1 {
       font-family: "Expletus Sans", sans-serif;
@@ -45,12 +49,20 @@ const UserContainer = styled.div`
       color: #ea5455;
       margin-bottom: 5px;
     }
+
+    @media (max-width: 580px) {
+      align-items: center;
+    }
   }
+
   img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    object-fit: cover;
+    grid-area: profilePick;
   }
+
   a {
     max-width: fit-content;
     color: #ea5455;
@@ -62,11 +74,29 @@ const UserContainer = styled.div`
     box-sizing: border-box;
     transition: all 0.25s ease;
     margin-right: 20px;
+
     &:hover {
       background-color: #ea5455;
       color: #decdc3;
       cursor: pointer;
       user-select: none;
+    }
+  }
+
+  @media (max-width: 750px) {
+    img {
+      transform: scale(0.8);
+    }
+  }
+  @media (max-width: 580px) {
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "profilePick" 
+        "credential";
+    img {
+      margin: -7%;
+      transform: scale(0.7);
     }
   }
 `;
@@ -113,8 +143,8 @@ const Account = () => {
                 </div>
               </div>
               <img
-                src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=826&t=st=1700506056~exp=1700506656~hmac=e3ca4e75d9d5e37baae8eaf03719bae8756c0a8a87598651d44ccee23526885a"
-                alt=""
+                src="https://img.freepik.com/premium-vector/ufo-cute-alien-cartoon-character-flying-saucer-vector-illustration-flat-design_20412-3319.jpg?size=626&ext=jpg&ga=GA1.1.1724254608.1700652806&semt=ais"
+                alt="profile pick"
               />
             </UserContainer>
             <FollowedNews AgencyList={profileDetils?.follows} />
