@@ -80,7 +80,6 @@ const Account = () => {
   const profileDetils = useSelector((state) => state?.profile?.user);
   const getProfileData = () => {
     const TOKEN = currentUser?.token;
-    console.log("TOKEN getProfileUSEEffect", TOKEN);
     getProfile(dispatch, TOKEN);
   };
 

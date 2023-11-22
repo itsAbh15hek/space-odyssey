@@ -1,5 +1,4 @@
 import axios from "axios";
-import { userRequest } from "../../requestMethods";
 import { profileFailure, profileStart, profileSuccess } from "../profileSlice";
 
 export const getProfile = async (dispatch, TOKEN) => {

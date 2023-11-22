@@ -49,11 +49,11 @@ function App() {
       <Route path="/user" element={<Account />} />
       <Route path="/user/settings" element={<Settings />} />
       <Route path="/user/settings/editprofile" element={<EditProfile />} />
+      <Route path="/user/settings/deleteaccount/" element={<DeleteAccount />} />
       <Route
-        path="/user/settings/deleteaccount/"
+        path="/user/settings/changepassword"
         element={<ChangePassword />}
       />
-      <Route path="/user/settings/changepassword" element={<Settings />} />
 
       {/* News */}
       <Route path="/news" element={<News />} />
