@@ -29,7 +29,7 @@ const Heading = styled.h1`
 const Img = styled.img`
   width: 80%;
   aspect-ratio: 16/9;
-  background-color: rgba(45, 64, 89, 0.3);
+  //background-color: rgba(45, 64, 89, 0.3);
   border-radius: 10px;
   object-fit: contain;
   margin-bottom: 20px;
@@ -38,6 +38,9 @@ const Info = styled.p`
   margin: 30px auto;
   text-align: justify;
   line-height: 1.5;
+`;
+const Li = styled.p`
+  margin: 10px 0 0 0;
 `;
 
 const CelestialDetails = () => {
@@ -76,7 +79,7 @@ const CelestialDetails = () => {
             </Heading>
             {itemData?.image && <Img src={itemData.image} alt="" />}
             {itemData?.info && <Info>{itemData.info}</Info>}
-            {itemData?.facts && <Info>{itemData.facts}</Info>}
+            {itemData?.facts && <Info>{itemData.facts.map(fact=><Li>{fact}</Li>)}</Info>}
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}

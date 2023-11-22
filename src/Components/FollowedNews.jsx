@@ -57,9 +57,15 @@ const FollowedNews = ({ AgencyList }) => {
       <h1>News Agencies followed by you</h1>
       <Agencies>
         {AgencyList?.map((agency) => (
+<<<<<<< HEAD
           <div className="agency">
             <img src={agency.image} alt="" />
             <p>{agency.name}</p>
+=======
+          <div key={agency?.name} className="agency">
+            <img src={agency?.image} alt="" />
+            <p>{agency?.name}</p>
+>>>>>>> b4cd883f2fed9374aca467ebcd13b58357517892
           </div>
         ))}
       </Agencies>

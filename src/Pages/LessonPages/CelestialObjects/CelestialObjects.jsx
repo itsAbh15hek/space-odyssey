@@ -43,7 +43,7 @@ const CelestialObjects = () => {
       //   properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
       // }
       setLessonCategory(properData);
-      console.log("madarchod", properData);
+      console.log("ma******d", properData);
       setStatus(0);
     } catch (error) {
       console.log("error", error);

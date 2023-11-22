@@ -44,7 +44,7 @@ const CelestialCategoryPage = () => {
       //   properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
       // }
       setLessonCategory(properData);
-      console.log("madarchod", properData);
+      console.log("ma******d", properData);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
@@ -60,7 +60,7 @@ const CelestialCategoryPage = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ListHeader title={pathname} />
+        <ListHeader title={pathname.replace("%20"," ")} />
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
