@@ -56,10 +56,10 @@ const FollowedNews = ({ AgencyList }) => {
     <Container>
       <h1>News Agencies followed by you</h1>
       <Agencies>
-        {AgencyList.map((agency) => (
-          <div className="agency">
-            <img src={agency.image} alt="" />
-            <p>{agency.name}</p>
+        {AgencyList?.map((agency) => (
+          <div key={agency?.name} className="agency">
+            <img src={agency?.image} alt="" />
+            <p>{agency?.name}</p>
           </div>
         ))}
       </Agencies>
