@@ -18,6 +18,9 @@ import CelestialCategoryPage from "./Pages/LessonPages/CelestialObjects/Celestia
 import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDetails";
 import ViewQuiz from "./Pages/QuizPages/ViewQuiz";
 import ResetPasswordNew from "./Pages/ResetPasswordNew";
+import EditProfile from "./Pages/ProfilePages/EditProfile";
+import DeleteAccount from "./Pages/ProfilePages/DeleteAccount";
+import ChangePassword from "./Pages/ProfilePages/ChangePassword";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -45,6 +48,12 @@ function App() {
       {/* Profile */}
       <Route path="/user" element={<Account />} />
       <Route path="/user/settings" element={<Settings />} />
+      <Route path="/user/settings/editprofile" element={<EditProfile />} />
+      <Route
+        path="/user/settings/deleteaccount/"
+        element={<ChangePassword />}
+      />
+      <Route path="/user/settings/changepassword" element={<Settings />} />
 
       {/* News */}
       <Route path="/news" element={<News />} />
