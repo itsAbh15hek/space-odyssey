@@ -101,20 +101,24 @@ const UserContainer = styled.div`
   }
 `;
 const Account = () => {
-  const profileDetils = useSelector((state) => state?.profile?.user);
   const currentUser = useSelector((state) => state?.user?.currentUser);
   const navigate = useNavigate();
   const quizList = useSelector((state) => state?.profile?.quizList);
-  console.log("currentUser", currentUser?.token);
   const dispatch = useDispatch();
   const isFetching = useSelector((state) => state?.profile?.isFetching);
   const error = useSelector((state) => state?.profile?.error);
+  const profileDetils = useSelector((state) => state?.profile?.user);
   const getProfileData = () => {
-    getProfile(dispatch);
+    const TOKEN = currentUser?.token;
+    console.log("TOKEN getProfileUSEEffect", TOKEN);
+    getProfile(dispatch, TOKEN);
   };
 
   useEffect(() => {
     if (!currentUser) navigate("/login");
+  }, [currentUser]);
+
+  useEffect(() => {
     if (currentUser) getProfileData();
   }, [currentUser]);
 
