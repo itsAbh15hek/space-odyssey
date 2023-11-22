@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import FourOFour from "./Pages/FourOFour";
 import Account from "./Pages/Account";
+import Settings from "./Pages/ProfilePages/Settings";
 import ResetPassword from "./Pages/ResetPassword";
 import { useSelector } from "react-redux";
 import CategoryPage from "./Pages/LessonPages/CategoryPage";
@@ -30,19 +31,29 @@ function App() {
   );
   console.log(currentUser);
   return (
+    // Routes
     <Routes>
+      {/* Home */}
       <Route path="/" element={<Home />} />
 
+      {/* Auth */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/resetpassword/:id" element={<ResetPasswordNew />} />
 
+      {/* Profile */}
       <Route path="/user" element={<Account />} />
+      <Route path="/user/settings" element={<Settings />} />
 
+      {/* News */}
       <Route path="/news" element={<News />} />
 
+      {/* Quizes */}
       <Route path="/quizes" element={<Quizes />} />
       <Route path="/quizes/view-quiz/:id" element={<ViewQuiz />} />
 
+      {/* Lessons */}
       <Route path="/lessons" element={<Lessons />} />
       <Route path="/lessons/:id" element={<CategoryPage />} />
       <Route path="/lessons/celestialobjects" element={<CelestialObjects />} />
@@ -55,8 +66,8 @@ function App() {
         element={<CelestialDetails />}
       />
       <Route path="/lessons/:id/:id" element={<ItemDetails />} />
-      <Route path="/resetpassword" element={<ResetPassword />} />
-      <Route path="/resetpassword/:id" element={<ResetPasswordNew />} />
+
+      {/* 404 */}
       <Route path="*" element={<FourOFour />} />
     </Routes>
   );

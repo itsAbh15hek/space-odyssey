@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../redux/apiCalls/apiCalls";
 
 const Main = styled.div`
   height: 100vh;
@@ -53,15 +54,26 @@ const Button = styled.button`
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
-
+  cursor: pointer;
   font-family: "Expletus Sans", sans-serif;
 `;
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({});
   const currentUser = useSelector(
     (state) => state?.user?.currentUser?.data?.user
   );
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signup(dispatch, userData);
+  };
 
   useEffect(() => {
     if (currentUser) navigate("/user");
@@ -71,14 +83,44 @@ const Register = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <Form action="" className="register">
+        <Form onSubmit={(e) => handleSubmit(e)} className="register">
           <h1>Create an Account</h1>
 
-          <Input type="text" placeholder="Name" />
-          <Input type="text" placeholder="Email" />
-          <Input type="text" placeholder="Username" />
-          <Input type="text" placeholder="Password" />
-          <Input type="text" placeholder="Confirm Password" />
+          <Input
+            required
+            type="text"
+            placeholder="Name"
+            name="name"
+            onChange={(e) => handleChange(e)}
+          />
+          <Input
+            required
+            type="text"
+            placeholder="Email"
+            name="email"
+            onChange={(e) => handleChange(e)}
+          />
+          <Input
+            required
+            type="text"
+            placeholder="Username"
+            name="username"
+            onChange={(e) => handleChange(e)}
+          />
+          <Input
+            required
+            type="text"
+            placeholder="Password"
+            name="password"
+            onChange={(e) => handleChange(e)}
+          />
+          <Input
+            required
+            type="text"
+            placeholder="Confirm Password"
+            name="passwordConfirm"
+            onChange={(e) => handleChange(e)}
+          />
           <Button type="submit">Register</Button>
           <span>
             <Link to={"/login"}>Already have an Account</Link>

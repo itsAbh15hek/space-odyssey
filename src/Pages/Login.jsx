@@ -43,7 +43,6 @@ const Form = styled.form`
 
   @media (max-width: 1030px) {
     transform: scale(0.9);
-    
   }
   @media (max-width: 726px) {
     transform: scale(0.8);
@@ -51,11 +50,9 @@ const Form = styled.form`
   }
   @media (max-width: 726px) {
     transform: scale(0.8);
-
   }
   @media (max-width: 660px) {
     transform: scale(0.7);
-    
   }
   @media (max-width: 450px) {
     transform: scale(0.6);
@@ -70,7 +67,6 @@ const Form = styled.form`
       font-size: 120px;
     }
   }
-  
 `;
 const Input = styled.input`
   width: 600px;
@@ -92,7 +88,7 @@ const Button = styled.button`
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
-
+  cursor: pointer;
   font-family: "Expletus Sans", sans-serif;
 
   @media (max-width: 730px) {
@@ -105,8 +101,6 @@ const Button = styled.button`
   @media (max-width: 380px) {
     font-size: 25px;
   }
-
-
 `;
 
 const Login = () => {
