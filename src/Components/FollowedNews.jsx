@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 const Container = styled.div`
   height: fit-content;
   width: 95%;
@@ -40,31 +41,36 @@ const Agencies = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: start;
+
     img {
       height: 80px;
       width: 80px;
       object-fit: contain;
     }
+
     p {
       margin: 0 auto;
       text-align: center;
     }
   }
 `;
-const FollowedNews = ({ AgencyList }) => {
-  return (
-    <Container>
-      <h1>News Agencies followed by you</h1>
-      <Agencies>
-        {AgencyList?.map((agency) => (
-          <div key={agency?.name} className="agency">
-            <img src={agency?.image} alt="" />
-            <p>{agency?.name}</p>
-          </div>
-        ))}
-      </Agencies>
-    </Container>
-  );
+const FollowedNews = ({AgencyList}) => {
+    return (
+        <Container>
+            <h1>News Agencies followed by you</h1>
+            <Agencies>
+                {AgencyList?.map((agency) => (
+
+                    <div className="agency">
+                        <div key={agency?.name} className="agency">
+                            <img src={agency?.image} alt=""/>
+                            <p>{agency?.name}</p>
+                        </div>
+                    </div>
+                ))}
+            </Agencies>
+        </Container>
+    );
 };
 
 export default FollowedNews;
