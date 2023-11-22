@@ -28,11 +28,8 @@ const Navigation = styled.div`
   @media (max-width: 1030px) {
     height: 100px;
   }
-
-
-
-
 `;
+
 const List = styled.ul`
   height: 110px;
   width: 80vw;
@@ -49,7 +46,7 @@ const List = styled.ul`
 
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-  
+
   li {
     list-style: none;
     position: relative;
@@ -74,6 +71,7 @@ const List = styled.ul`
     font-weight: 500;
     z-index: 2;
   }
+
   span {
     position: relative;
     display: block;
@@ -110,14 +108,12 @@ const List = styled.ul`
     height: auto;
     padding: 0;
     top: 10px;
-    border-radius: 5px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    
-    li{
+    border-radius: 5px 5px 0 0;
+
+    li {
       transform: scale(0.7);
     }
-    
+
   }
   //
   //@media (max-width: 650px) {
