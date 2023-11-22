@@ -10,11 +10,11 @@ const Main = styled.div`
   justify-content: start;
   z-index: 2;
   background-color: rgba(45, 64, 89, 0.1);
-  border-radius: 20px;
   margin: 20px auto;
-  padding: 40px 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 20px 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px 5px 0 0;
   color: #e5e5e5;
   overflow: hidden;
   //max-width: 768px;
@@ -29,6 +29,11 @@ const Main = styled.div`
     height: calc(95vh - 150px);
     width: 100%;
     margin: 0;
+    bottom: 10px;
+  }
+  
+  @media (max-width: 500px) {
+    padding: 20px;
   }
 `;
 const MainContainer = ({ children }) => {

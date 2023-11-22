@@ -23,8 +23,8 @@ const Main = styled.div`
     font-family: "Expletus Sans", sans-serif;
     font-size: 30px;
     color: #ea5455;
-    margin: 30px auto;
-    text-align: center;
+    margin: 20px 0 30px;
+    align-self: baseline;
     text-transform: capitalize;
   }
 
@@ -39,6 +39,7 @@ const Main = styled.div`
 const QuestionContiner = styled.div`
   width: 100%;
   height: max-content;
+  padding-bottom: 20px;
 
   p {
     color: #dcdcdc;
@@ -46,12 +47,12 @@ const QuestionContiner = styled.div`
 
 
   @media (max-width: 425px) {
-    .option-div{
+    .option-div {
       margin-top: 10px;
       margin-bottom: 2px;
     }
   }
-  
+
 `;
 
 const QuizOptionsAnswersContainer = styled.div`
@@ -59,7 +60,7 @@ const QuizOptionsAnswersContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  
+
   @media (max-width: 425px) {
     grid-template-columns: auto;
   }
@@ -88,37 +89,37 @@ const ViewQuiz = () => {
     }, []);
 
     return (<Main>
-            <video src={staryBG} autoPlay loop muted></video>
-            <Header/>
-            <MainContainer>
-                <ScrollableComponent>
-                    <h1>{quizDetails?.topic}</h1>
-                    <div className="details">
-                        <p>{`Date: ${quizDetails?.quizDate?.split("T")[0]}`}</p>
-                        <p>{`Score: ${quizDetails?.marksObtained}`}</p>
-                    </div>
-                    {/*<h2>Questions</h2>*/}
-                    <QuestionContiner>
-                        {quizDetails?.questionAndCorrectAnswers?.map((qna, index) => (<div>
-                                <h3 style={{marginTop: "10px"}}>{index + 1}. {qna?.questionString}</h3>
+        <video src={staryBG} autoPlay loop muted></video>
+        <Header/>
+        <MainContainer>
+            <ScrollableComponent>
+                <h1>{quizDetails?.topic}</h1>
+                <div className="details">
+                    <p>{`Date: ${quizDetails?.quizDate?.split("T")[0]}`}</p>
+                    <p>{`Score: ${quizDetails?.marksObtained}`}</p>
+                </div>
+                {/*<h2>Questions</h2>*/}
+                <QuestionContiner>
+                    {quizDetails?.questionAndCorrectAnswers?.map((qna, index) => (<div>
+                        <h3 style={{marginTop: "10px"}}>{index + 1}. {qna?.questionString}</h3>
 
-                                <QuizOptionsAnswersContainer>
-                                    {/*<h4>Options</h4>*/}
-                                    <div>
-                                        {qna?.options?.map((opt, index) => (
-                                            <p>{String.fromCharCode(97 + index)}. {opt}</p>))}
-                                    </div>
-                                    <div className="option-div">
-                                        <p>{`Correct Option: ${qna?.correctOption}`}</p>
-                                        <p>{`Choosen Option: ${quizDetails?.choosenOptions[index]}`}</p>
-                                    </div>
-                                </QuizOptionsAnswersContainer>
-                            </div>))}
-                    </QuestionContiner>
-                </ScrollableComponent>
-            </MainContainer>
-            <NavBar/>
-        </Main>);
+                        <QuizOptionsAnswersContainer>
+                            {/*<h4>Options</h4>*/}
+                            <div>
+                                {qna?.options?.map((opt, index) => (
+                                    <p>{String.fromCharCode(97 + index)}. {opt}</p>))}
+                            </div>
+                            <div className="option-div">
+                                <p>{`Correct Option: ${qna?.correctOption}`}</p>
+                                <p>{`Choosen Option: ${quizDetails?.choosenOptions[index]}`}</p>
+                            </div>
+                        </QuizOptionsAnswersContainer>
+                    </div>))}
+                </QuestionContiner>
+            </ScrollableComponent>
+        </MainContainer>
+        <NavBar/>
+    </Main>);
 };
 
 export default ViewQuiz;
