@@ -21,6 +21,7 @@ import ResetPasswordNew from "./Pages/ResetPasswordNew";
 import EditProfile from "./Pages/ProfilePages/EditProfile";
 import DeleteAccount from "./Pages/ProfilePages/DeleteAccount";
 import ChangePassword from "./Pages/ProfilePages/ChangePassword";
+import { userRequest } from "./requestMethods";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -29,10 +30,11 @@ import ChangePassword from "./Pages/ProfilePages/ChangePassword";
 // studio.initialize();
 
 function App() {
-  const currentUser = useSelector(
-    (state) => state?.user?.currentUser?.data?.user
-  );
-  console.log(currentUser);
+  const currentUser = useSelector((state) => state?.user?.currentUser);
+  console.log("App", currentUser);
+  userRequest.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${currentUser?.token}`;
   return (
     // Routes
     <Routes>
@@ -49,7 +51,7 @@ function App() {
       <Route path="/user" element={<Account />} />
       <Route path="/user/settings" element={<Settings />} />
       <Route path="/user/settings/editprofile" element={<EditProfile />} />
-      <Route path="/user/settings/deleteaccount/" element={<DeleteAccount />} />
+      <Route path="/user/settings/deleteaccount" element={<DeleteAccount />} />
       <Route
         path="/user/settings/changepassword"
         element={<ChangePassword />}

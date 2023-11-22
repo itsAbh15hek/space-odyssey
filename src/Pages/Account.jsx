@@ -111,8 +111,7 @@ const Account = () => {
   const error = useSelector((state) => state?.profile?.error);
   const profileDetils = useSelector((state) => state?.profile?.user);
   const getProfileData = () => {
-    const TOKEN = currentUser?.token;
-    getProfile(dispatch, TOKEN);
+    getProfile(dispatch);
   };
 
   useEffect(() => {

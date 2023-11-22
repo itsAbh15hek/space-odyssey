@@ -1,5 +1,6 @@
 import { publicRequest, userRequest } from "../../requestMethods";
 import {
+  deleteUserSuccess,
   loginSuccess,
   updateSuccess,
   userFailure,
@@ -36,6 +37,32 @@ export const updateUser = async (dispatch, currentUser, userData) => {
     });
     console.log("updateUser ran", { ...data, ...currentUser });
     dispatch(updateSuccess({ ...data, ...currentUser }));
+  } catch (error) {
+    dispatch(userFailure(error?.response?.data?.message));
+  }
+};
+
+export const updatePassword = async (dispatch, passwords) => {
+  dispatch(userStart());
+  try {
+    const res = await userRequest.patch("/users/updateMyPassword", {
+      ...passwords,
+    });
+    dispatch(updateSuccess(res.data));
+  } catch (error) {
+    dispatch(userFailure(error?.response?.data?.message));
+  }
+};
+
+export const deleteUser = async (dispatch, password) => {
+  console.log("pass", { password: password });
+  dispatch(userStart());
+  try {
+    const res = await userRequest.post("/users/deleteMe", {
+      password: password,
+    });
+    console.log("delete", res);
+    dispatch(deleteUserSuccess());
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));
   }
