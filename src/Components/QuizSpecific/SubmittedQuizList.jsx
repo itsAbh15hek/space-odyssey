@@ -72,7 +72,7 @@ const Quiz = styled(motion.div)`
 const SubmittedQuizList = ({ quizList }) => {
   return (
     <QuizContainer>
-      <h1>Quizes Taken</h1>
+      <h1>Quizes Submitted</h1>
       <div className="quizList">
         {quizList.map((quiz) => (
           <Quiz

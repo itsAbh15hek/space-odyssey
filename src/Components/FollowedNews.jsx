@@ -91,7 +91,7 @@ const Agencies = styled.div`
 const FollowedNews = ({AgencyList}) => {
     return (
         <Container>
-            <h1>News Agencies followed by you</h1>
+            <h1>News Agencies followed</h1>
             <Agencies>
                 {AgencyList?.map((agency) => (
                     // <div className="agency">
