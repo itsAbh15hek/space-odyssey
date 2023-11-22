@@ -39,6 +39,9 @@ const Info = styled.p`
   text-align: justify;
   line-height: 1.5;
 `;
+const Li = styled.p`
+  margin: 10px 0 0 0;
+`;
 
 const CelestialDetails = () => {
   const [status, setStatus] = useState(-1);
@@ -76,7 +79,7 @@ const CelestialDetails = () => {
             </Heading>
             {itemData?.image && <Img src={itemData.image} alt="" />}
             {itemData?.info && <Info>{itemData.info}</Info>}
-            {itemData?.facts && <Info>{itemData.facts}</Info>}
+            {itemData?.facts && <Info>{itemData.facts.map(fact=><Li>{fact}</Li>)}</Info>}
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}

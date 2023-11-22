@@ -39,7 +39,7 @@ const CategoryPage = () => {
       const { data } = await publicRequest.get(`/lessons/${pathname}`);
 
       setLessonCategory(data.data);
-      console.log("madarchod", data.data);
+      console.log("ma******d", data.data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
