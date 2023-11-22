@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
-  height: 300px;
+  //height: 300px;
   width: 95%;
   position: relative;
   display: flex;
@@ -31,7 +31,7 @@ const Container = styled.div`
   img {
     height: 200px;
     width: 250px;
-    background-color: #ffffff1f;
+    //background-color: #ffffff1f;
     border-radius: 5px;
     object-fit: contain;
   }

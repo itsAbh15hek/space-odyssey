@@ -31,7 +31,7 @@ const Heading = styled.h1`
 const Img = styled.img`
   width: 80%;
   aspect-ratio: 16/9;
-  background-color: rgba(45, 64, 89, 0.3);
+  //background-color: rgba(45, 64, 89, 0.3);
   border-radius: 10px;
   object-fit: contain;
   margin-bottom: 20px;
@@ -41,6 +41,10 @@ const Info = styled.p`
   text-align: justify;
   line-height: 1.5;
 `;
+const Li = styled.p`
+  margin: 10px 0 0 0;
+`;
+
 
 const ItemDetails = () => {
   const [status, setStatus] = useState(-1);
@@ -78,7 +82,7 @@ const ItemDetails = () => {
             </Heading>
             {itemData?.image && <Img src={itemData.image} alt="" />}
             {itemData?.info && <Info>{itemData.info}</Info>}
-            {itemData?.facts && <Info>{itemData.facts}</Info>}
+            {itemData?.facts && <Info>{itemData.facts.map(fact=><Li>{fact}</Li>)}</Info>}
             {path === "ISS" && <ISSComponents />}
             {path === "Mars_rover" && (
               <RoverComponent roverList={itemData.marsAdditional} />

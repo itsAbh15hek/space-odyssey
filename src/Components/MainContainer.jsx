@@ -17,6 +17,7 @@ const Main = styled.div`
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   color: #e5e5e5;
   overflow: hidden;
+  //max-width: 768px;
 
   .text {
     min-height: calc(100% - 80px);
