@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
@@ -58,19 +58,27 @@ const Button = styled.button`
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState({ status: 1 });
-  const url = window.location.href;
-  console.log("url");
-  const handleSubmit = (e) => {
+  const [message, setMessage] = useState({ status: 1, message: "" });
+  const url = window.location.href.split("/")[2];
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = publicRequest.post("/users/forgotPassword", { email: email });
-      setMessage({ status: 0, message: res?.message });
+      const { data } = await publicRequest.post("/users/forgotPassword", {
+        email: email,
+        link: url,
+      });
+      console.log("first", data);
+      setMessage({ status: 0, message: data?.message });
+      setEmail("");
     } catch (error) {
-      console.log("first", error?.response?.data?.message);
-      setMessage({ status: 1, message: error?.response?.data?.message });
+      setMessage({ status: -1, message: error?.response?.data?.message });
     }
   };
+
+  useEffect(() => {
+    setMessage({ status: 1, message: "" });
+  }, []);
+
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
@@ -80,9 +88,11 @@ const ResetPassword = () => {
           <h1>Reset Password</h1>
           <Input
             type="text"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
+          <span>{message?.message}</span>
           <Button type="submit">Submit</Button>
           <span>
             <Link to={"/login"}>Login</Link>
@@ -90,7 +100,6 @@ const ResetPassword = () => {
           <span>
             <Link to={"/register"}>Create a new Account</Link>
           </span>
-          {message.status != -1 && <span>{message?.message}</span>}
         </Form>
       </MainContainer>
 
