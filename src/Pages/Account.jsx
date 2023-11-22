@@ -11,6 +11,8 @@ import SubmittedQuizList from "../Components/QuizSpecific/SubmittedQuizList";
 import FollowedNews from "../Components/FollowedNews";
 import { getProfile } from "../redux/apiCalls/profileApiCalls";
 import { logOut } from "../redux/userSlice";
+import { clearProfile } from "../redux/profileSlice";
+import Loader from "../Components/Loader";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -70,23 +72,25 @@ const UserContainer = styled.div`
 `;
 const Account = () => {
   const profileDetils = useSelector((state) => state?.profile?.user);
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector((state) => state?.user?.currentUser);
   const navigate = useNavigate();
-  const quizList = useSelector((state) => state.profile.quizList);
+  const quizList = useSelector((state) => state?.profile?.quizList);
   console.log("currentUser", currentUser?.token);
   const dispatch = useDispatch();
-
+  const isFetching = useSelector((state) => state?.profile?.isFetching);
+  const error = useSelector((state) => state?.profile?.error);
   const getProfileData = () => {
     getProfile(dispatch);
   };
 
   useEffect(() => {
     if (!currentUser) navigate("/login");
-    getProfileData();
+    if (currentUser) getProfileData();
   }, [currentUser]);
 
   const handleLogout = () => {
     dispatch(logOut());
+    dispatch(clearProfile());
   };
 
   return (
@@ -94,26 +98,30 @@ const Account = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ScrollableComponent>
-          <UserContainer>
-            <div className="credentials">
-              <div>
-                <h1>{profileDetils?.name}</h1>
-                <h3>{`@${profileDetils?.username}`}</h3>
+        {isFetching && <Loader />}
+        {!isFetching && (
+          <ScrollableComponent>
+            <UserContainer>
+              <div className="credentials">
+                <div>
+                  <h1>{profileDetils?.name}</h1>
+                  <h3>{`@${profileDetils?.username}`}</h3>
+                </div>
+                <div className="options">
+                  <Link to={"/user/settings"}>Settings</Link>
+                  <a onClick={handleLogout}>Logout</a>
+                </div>
               </div>
-              <div className="options">
-                <Link to={"/editProfile"}>Edit Profile</Link>
-                <a onClick={handleLogout}>Logout</a>
-              </div>
-            </div>
-            <img
-              src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=826&t=st=1700506056~exp=1700506656~hmac=e3ca4e75d9d5e37baae8eaf03719bae8756c0a8a87598651d44ccee23526885a"
-              alt=""
-            />
-          </UserContainer>
-          <FollowedNews AgencyList={profileDetils?.follows} />
-          <SubmittedQuizList quizList={quizList} />
-        </ScrollableComponent>
+              <img
+                src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=826&t=st=1700506056~exp=1700506656~hmac=e3ca4e75d9d5e37baae8eaf03719bae8756c0a8a87598651d44ccee23526885a"
+                alt=""
+              />
+            </UserContainer>
+            <FollowedNews AgencyList={profileDetils?.follows} />
+            <SubmittedQuizList quizList={quizList} />
+          </ScrollableComponent>
+        )}
+        {error && <p>Something went wrong.</p>}
       </MainContainer>
 
       <NavBar />

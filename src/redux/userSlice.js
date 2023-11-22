@@ -15,22 +15,26 @@ export const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.isFetching = false;
       state.error = false;
+      state.errorMsg = null;
       state.currentUser = action.payload;
     },
     refreshSuccess: (state, action) => {
       state.isFetching = false;
       state.error = false;
+      state.errorMsg = null;
       state.currentUser = action.payload;
     },
     logoutSuccess: (state) => {
       state.isFetching = false;
       state.error = false;
       state.currentUser = null;
+      state.errorMsg = null;
     },
     deleteUserSuccess: (state) => {
       state.isFetching = false;
       state.error = false;
       state.currentUser = null;
+      state.errorMsg = null;
     },
     userFailure: (state, action) => {
       state.isFetching = false;
@@ -41,6 +45,7 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.error = false;
       state.currentUser = null;
+      state.errorMsg = null;
     },
   },
 });
