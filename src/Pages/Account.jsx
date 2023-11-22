@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, {useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Components/Header";
 import staryBG from "../assets/staryBG.mp4";
 import MainContainer from "../Components/MainContainer";
 import NavBar from "../Components/NavBar";
 import ScrollableComponent from "../Components/ScrollableComponent";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import SubmittedQuizList from "../Components/QuizSpecific/SubmittedQuizList";
 import FollowedNews from "../Components/FollowedNews";
-import { getProfile } from "../redux/apiCalls/profileApiCalls";
-import { logOut } from "../redux/userSlice";
-import { clearProfile } from "../redux/profileSlice";
+import {getProfile} from "../redux/apiCalls/profileApiCalls";
+import {logOut} from "../redux/userSlice";
+import {clearProfile} from "../redux/profileSlice";
 import Loader from "../Components/Loader";
+
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
+
   video {
     position: absolute;
     width: 100%;
@@ -101,66 +103,65 @@ const UserContainer = styled.div`
   }
 `;
 const Account = () => {
-  const currentUser = useSelector((state) => state?.user?.currentUser);
-  const navigate = useNavigate();
-  const quizList = useSelector((state) => state?.profile?.quizList);
-  const dispatch = useDispatch();
-  const isFetching = useSelector((state) => state?.profile?.isFetching);
-  const error = useSelector((state) => state?.profile?.error);
-  const profileDetils = useSelector((state) => state?.profile?.user);
-  const getProfileData = () => {
-    const TOKEN = currentUser?.token;
-    console.log("TOKEN getProfileUSEEffect", TOKEN);
-    getProfile(dispatch, TOKEN);
-  };
+    const currentUser = useSelector((state) => state?.user?.currentUser);
+    const navigate = useNavigate();
+    const quizList = useSelector((state) => state?.profile?.quizList);
+    const dispatch = useDispatch();
+    const isFetching = useSelector((state) => state?.profile?.isFetching);
+    const error = useSelector((state) => state?.profile?.error);
+    const profileDetils = useSelector((state) => state?.profile?.user);
+    const getProfileData = () => {
+        const TOKEN = currentUser?.token;
+        getProfile(dispatch, TOKEN);
+    };
 
-  useEffect(() => {
-    if (!currentUser) navigate("/login");
-  }, [currentUser]);
+    useEffect(() => {
+        if (!currentUser) navigate("/login");
+    }, [currentUser]);
 
-  useEffect(() => {
-    if (currentUser) getProfileData();
-  }, [currentUser]);
+    useEffect(() => {
+        if (currentUser) getProfileData();
+    }, [currentUser]);
 
-  const handleLogout = () => {
-    dispatch(logOut());
-    dispatch(clearProfile());
-  };
+    const handleLogout = () => {
+        dispatch(logOut());
+        dispatch(clearProfile());
+    };
 
-  return (
-    <Main>
-      <video src={staryBG} autoPlay loop muted></video>
-      <Header />
-      <MainContainer>
-        {isFetching && <Loader />}
-        {!isFetching && (
-          <ScrollableComponent>
-            <UserContainer>
-              <div className="credentials">
-                <div>
-                  <h1>{profileDetils?.name}</h1>
-                  <h3>{`@${profileDetils?.username}`}</h3>
-                </div>
-                <div className="options">
-                  <Link to={"/user/settings"}>Settings</Link>
-                  <a onClick={handleLogout}>Logout</a>
-                </div>
-              </div>
-              <img
-                src="https://img.freepik.com/premium-vector/ufo-cute-alien-cartoon-character-flying-saucer-vector-illustration-flat-design_20412-3319.jpg?size=626&ext=jpg&ga=GA1.1.1724254608.1700652806&semt=ais"
-                alt="profile pick"
-              />
-            </UserContainer>
-            <FollowedNews AgencyList={profileDetils?.follows} />
-            <SubmittedQuizList quizList={quizList} />
-          </ScrollableComponent>
-        )}
-        {error && <p>Something went wrong.</p>}
-      </MainContainer>
+    return (
+        <Main>
+            <video src={staryBG} autoPlay loop muted></video>
+            <Header/>
+            <MainContainer>
+                {isFetching && <Loader/>}
+                {!isFetching && (
+                    <ScrollableComponent>
+                        <UserContainer>
+                            <div className="credentials">
+                                <div>
+                                    <h1>{profileDetils?.name}</h1>
+                                    <h3>{`@${profileDetils?.username}`}</h3>
+                                </div>
+                                <div className="options">
+                                    <Link to={"/user/settings"}>Settings</Link>
+                                    <a onClick={handleLogout}>Logout</a>
+                                </div>
+                            </div>
+                            <img
+                                src="https://img.freepik.com/premium-vector/ufo-cute-alien-cartoon-character-flying-saucer-vector-illustration-flat-design_20412-3319.jpg?size=626&ext=jpg&ga=GA1.1.1724254608.1700652806&semt=ais"
+                                alt="profile pick"
+                            />
+                        </UserContainer>
+                        <FollowedNews AgencyList={profileDetils?.follows}/>
+                        <SubmittedQuizList quizList={quizList}/>
+                    </ScrollableComponent>
+                )}
+                {error && <p>Something went wrong.</p>}
+            </MainContainer>
 
-      <NavBar />
-    </Main>
-  );
+            <NavBar/>
+        </Main>
+    );
 };
 
 export default Account;
