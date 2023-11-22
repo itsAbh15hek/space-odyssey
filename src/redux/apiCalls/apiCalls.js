@@ -7,6 +7,6 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/users/login", user);
     dispatch(loginSuccess(res.data));
   } catch (error) {
-    dispatch(userFailure());
+    dispatch(userFailure(error?.response?.data?.message));
   }
 };

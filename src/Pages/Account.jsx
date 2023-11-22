@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Components/Header";
 import staryBG from "../assets/staryBG.mp4";
@@ -7,9 +7,10 @@ import MainContainer from "../Components/MainContainer";
 import NavBar from "../Components/NavBar";
 import ScrollableComponent from "../Components/ScrollableComponent";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuizList } from "../redux/apiCalls/quizApiCalls";
 import SubmittedQuizList from "../Components/QuizSpecific/SubmittedQuizList";
 import FollowedNews from "../Components/FollowedNews";
+import { getProfile } from "../redux/apiCalls/profileApiCalls";
+import { logOut } from "../redux/userSlice";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -58,28 +59,35 @@ const UserContainer = styled.div`
     text-decoration: none;
     box-sizing: border-box;
     transition: all 0.25s ease;
+    margin-right: 20px;
     &:hover {
-      padding: 10px 18px;
-      letter-spacing: 1.2px;
+      background-color: #ea5455;
+      color: #decdc3;
+      cursor: pointer;
+      user-select: none;
     }
   }
 `;
 const Account = () => {
-  const currentUser = useSelector(
-    (state) => state?.user?.currentUser?.data?.user
-  );
+  const profileDetils = useSelector((state) => state?.profile?.user);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const navigate = useNavigate();
-  const quizList = useSelector((state) => state.quizes.quizList);
-  console.log("currentUser", currentUser);
+  const quizList = useSelector((state) => state.profile.quizList);
+  console.log("currentUser", currentUser?.token);
   const dispatch = useDispatch();
 
-  const getQuizes = () => {
-    getQuizList(dispatch);
+  const getProfileData = () => {
+    getProfile(dispatch);
   };
+
   useEffect(() => {
-    getQuizes();
     if (!currentUser) navigate("/login");
-  }, []);
+    getProfileData();
+  }, [currentUser]);
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
 
   return (
     <Main>
@@ -90,17 +98,20 @@ const Account = () => {
           <UserContainer>
             <div className="credentials">
               <div>
-                <h1>{currentUser?.name}</h1>
-                <h3>{`@${currentUser?.username}`}</h3>
+                <h1>{profileDetils?.name}</h1>
+                <h3>{`@${profileDetils?.username}`}</h3>
               </div>
-              <Link to={"/editProfile"}>Edit Profile</Link>
+              <div className="options">
+                <Link to={"/editProfile"}>Edit Profile</Link>
+                <a onClick={handleLogout}>Logout</a>
+              </div>
             </div>
             <img
               src="https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?w=826&t=st=1700506056~exp=1700506656~hmac=e3ca4e75d9d5e37baae8eaf03719bae8756c0a8a87598651d44ccee23526885a"
               alt=""
             />
           </UserContainer>
-          <FollowedNews AgencyList={currentUser?.follows} />
+          <FollowedNews AgencyList={profileDetils?.follows} />
           <SubmittedQuizList quizList={quizList} />
         </ScrollableComponent>
       </MainContainer>

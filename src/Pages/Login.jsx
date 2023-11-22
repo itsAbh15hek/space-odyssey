@@ -7,6 +7,7 @@ import MainContainer from "../Components/MainContainer";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls/apiCalls";
+import Loader from "../Components/Loader";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -35,6 +36,9 @@ const Form = styled.form`
   }
   span {
     margin: 10px;
+  }
+  .error {
+    color: red;
   }
 
   @media (max-width: 1030px) {
@@ -66,6 +70,9 @@ const Login = () => {
   const currentUser = useSelector(
     (state) => state?.user?.currentUser?.data?.user
   );
+  const isFetching = useSelector((state) => state?.user?.isFetching);
+  const isError = useSelector((state) => state?.user?.error);
+  const errorMsg = useSelector((state) => state?.user?.errorMsg);
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({});
@@ -86,30 +93,34 @@ const Login = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <Form action="" className="login">
-          <h1>Login</h1>
-          <Input
-            onChange={(e) => handleChange(e)}
-            type="text"
-            name="username"
-            placeholder="Username"
-          />
-          <Input
-            onChange={(e) => handleChange(e)}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          <Button type="submit" onClick={(e) => handleSubmit(e)}>
-            Login
-          </Button>
-          <span>
-            <Link to={"/resetpassword"}>Forgot Password?</Link>
-          </span>
-          <span>
-            <Link to={"/register"}>Create a new Account</Link>
-          </span>
-        </Form>
+        {isFetching && <Loader />}
+        {!isFetching && (
+          <Form action="" className="login" onSubmit={(e) => handleSubmit(e)}>
+            <h1>Login</h1>
+            <Input
+              onChange={(e) => handleChange(e)}
+              type="text"
+              required
+              name="username"
+              placeholder="Username"
+            />
+            <Input
+              onChange={(e) => handleChange(e)}
+              type="password"
+              required
+              name="password"
+              placeholder="Password"
+            />
+            <Button type="submit">Login</Button>
+            <span>
+              <Link to={"/resetpassword"}>Forgot Password?</Link>
+            </span>
+            <span>
+              <Link to={"/register"}>Create a new Account</Link>
+            </span>
+            {isError && <span className="error">{errorMsg}</span>}
+          </Form>
+        )}
       </MainContainer>
 
       <NavBar />

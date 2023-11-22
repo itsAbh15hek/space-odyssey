@@ -15,7 +15,8 @@ export const profileSlice = createSlice({
     profileSuccess: (state, action) => {
       state.isFetching = false;
       state.error = false;
-      state.user = action.payload;
+      state.user = action.payload.user;
+      state.quizList = action.payload.quizList;
     },
     quizFetchSuccess: (state, action) => {
       state.isFetching = false;

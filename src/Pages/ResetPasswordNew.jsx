@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
 import { Link } from "react-router-dom";
-import { publicRequest } from "../requestMethods";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -56,33 +55,16 @@ const Button = styled.button`
   font-family: "Expletus Sans", sans-serif;
 `;
 
-const ResetPassword = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState({ status: 1 });
-  const url = window.location.href;
-  console.log("url");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      const res = publicRequest.post("/users/forgotPassword", { email: email });
-      setMessage({ status: 0, message: res?.message });
-    } catch (error) {
-      console.log("first", error?.response?.data?.message);
-      setMessage({ status: 1, message: error?.response?.data?.message });
-    }
-  };
+const ResetPasswordNew = () => {
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <Form action="" onSubmit={(e) => handleSubmit(e)} className="register">
-          <h1>Reset Password</h1>
-          <Input
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
+        <Form action="" className="register">
+          <h1>Enter New Password</h1>
+          <Input type="text" placeholder="Password" />
+          <Input type="text" placeholder="Confirm Password" />
           <Button type="submit">Submit</Button>
           <span>
             <Link to={"/login"}>Login</Link>
@@ -90,7 +72,6 @@ const ResetPassword = () => {
           <span>
             <Link to={"/register"}>Create a new Account</Link>
           </span>
-          {message.status != -1 && <span>{message?.message}</span>}
         </Form>
       </MainContainer>
 
@@ -99,4 +80,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ResetPasswordNew;

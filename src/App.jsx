@@ -16,6 +16,7 @@ import CelestialObjects from "./Pages/LessonPages/CelestialObjects/CelestialObje
 import CelestialCategoryPage from "./Pages/LessonPages/CelestialObjects/CelestialCategoryPage";
 import CelestialDetails from "./Pages/LessonPages/CelestialObjects/CelestialDetails";
 import ViewQuiz from "./Pages/QuizPages/ViewQuiz";
+import ResetPasswordNew from "./Pages/ResetPasswordNew";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -55,6 +56,7 @@ function App() {
       />
       <Route path="/lessons/:id/:id" element={<ItemDetails />} />
       <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/resetpassword/:id" element={<ResetPasswordNew />} />
       <Route path="*" element={<FourOFour />} />
     </Routes>
   );
