@@ -152,7 +152,6 @@ const Agency = styled.div`
   }
 `;
 
-
 const EditProfile = () => {
   const dispatch = useDispatch();
   const isFetching = useSelector((state) => state.user.isFetching);
@@ -222,8 +221,8 @@ const EditProfile = () => {
                   value={name}
                 />
                 <h2>Manage News Agencies</h2>
-                {!unfollowing[0] && <Loader />}
-                {unfollowing[0] && (
+                {!allAgencies[0] && <Loader />}
+                {allAgencies[0] && (
                   <>
                     <div className="container">
                       <div className="following">
