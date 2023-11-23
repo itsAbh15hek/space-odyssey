@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: baseline;
   justify-content: space-around;
   z-index: 2;
-  color: #ea5454f9;
+  color: #ea5454;
   background-color: rgba(45, 64, 89, 0.15);
   border-radius: 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   h1 {
-    color: #ea5454f9;
+    color: #ea5454;
     font-size: 40px;
     font-family: "Expletus Sans", sans-serif;
     margin: 30px 0;

@@ -113,7 +113,7 @@ const Container = styled.div`
 
   button {
     color: #ea5455;
-    background-color: #decdc3;
+    background-color: transparent;
     border: 1px solid;
     padding: 15px 30px;
     margin: 50px auto;
@@ -157,25 +157,23 @@ const EditProfile = () => {
   const isFetching = useSelector((state) => state.user.isFetching);
   const currentUser = useSelector((state) => state?.user?.currentUser);
   const userData = currentUser?.data?.user;
-  console.log("userData", userData);
-  const [name, setName] = useState(userData.name);
+  const [name, setName] = useState(userData?.name);
   const [allAgencies, setAllAgencies] = useState([]);
-  console.log("currentUser", userData);
   const [following, setFollowing] = useState([]);
   const [unfollowing, setUnfollowing] = useState([]);
   const getAllAgencies = async () => {
     const { data } = await publicRequest("/news/spaceAgencies");
-    setAllAgencies(data.data.agencies);
+    setAllAgencies(data?.data?.agencies);
   };
   useEffect(() => {
     getAllAgencies();
-    setFollowing(userData.follows);
+    setFollowing(userData?.follows);
   }, []);
   useEffect(() => {
     const res = [];
-    allAgencies.forEach((el) => {
+    allAgencies?.forEach((el) => {
       let match = false;
-      following.forEach((element) => {
+      following?.forEach((element) => {
         if (element.name === el.name) {
           match = true;
         }
@@ -190,15 +188,15 @@ const EditProfile = () => {
     setFollowing([...following, agency]);
   };
   const removeAgency = (agency) => {
-    setFollowing(following.filter((el) => el.name !== agency.name));
+    setFollowing(following?.filter((el) => el.name !== agency.name));
     unfollowing([...unfollowing, agency]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUser(dispatch, currentUser, {
+    updateUser(dispatch, {
       name: name,
-      follows: following.map((el) => el.name),
+      follows: following?.map((el) => el.name),
     });
   };
 
@@ -223,29 +221,34 @@ const EditProfile = () => {
                   value={name}
                 />
                 <h2>Manage News Agencies</h2>
-                <div className="container">
-                  <div className="following">
-                    <h3>Following</h3>
-                    {following.map((agency) => (
-                      <Agency onClick={() => removeAgency(agency)}>
-                        <img src={agency.image} />
-                        <h4>{agency.name}</h4>
-                        <span>-</span>
-                      </Agency>
-                    ))}
-                  </div>
-                  <div className="unfollowing ">
-                    <h3>Unfollowing</h3>
-                    {unfollowing.map((agency) => (
-                      <Agency onClick={() => addAgency(agency)}>
-                        <img src={agency.image} />
-                        <h4>{agency.name}</h4>
-                        <span>+</span>
-                      </Agency>
-                    ))}
-                  </div>
-                </div>
-                <button type="submit">Update Profile</button>
+                {!unfollowing[0] && <Loader />}
+                {unfollowing[0] && (
+                  <>
+                    <div className="container">
+                      <div className="following">
+                        <h3>Following</h3>
+                        {following?.map((agency) => (
+                          <Agency onClick={() => removeAgency(agency)}>
+                            <img src={agency.image} />
+                            <h4>{agency.name}</h4>
+                            <span>-</span>
+                          </Agency>
+                        ))}
+                      </div>
+                      <div className="unfollowing ">
+                        <h3>Unfollowing</h3>
+                        {unfollowing.map((agency) => (
+                          <Agency onClick={() => addAgency(agency)}>
+                            <img src={agency.image} />
+                            <h4>{agency.name}</h4>
+                            <span>+</span>
+                          </Agency>
+                        ))}
+                      </div>
+                    </div>
+                    <button type="submit">Update Profile</button>
+                  </>
+                )}
               </form>
             </Container>
           </ScrollableComponent>

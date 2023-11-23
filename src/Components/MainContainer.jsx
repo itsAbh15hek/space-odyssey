@@ -31,11 +31,9 @@ const Main = styled.div`
     margin: 0;
     bottom: 10px;
   }
-  
-  @media (max-width: 600px) {
+
+  @media (max-width: 500px) {
     padding: 20px;
-    height: calc(95vh - 110px);
-    
   }
 `;
 const MainContainer = ({ children }) => {
