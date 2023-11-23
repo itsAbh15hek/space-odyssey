@@ -37,14 +37,9 @@ const CelestialCategoryPage = () => {
         `/lessons/celestialobjects/${pathname}`
       );
       const properData = data.data;
-      // if (pathname === "celestialCategoryPage") {
-      //   properData.shift();
-      //   properData.shift();
-      //   properData.shift();
-      //   properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
-      // }
+
       setLessonCategory(properData);
-      console.log("ma******d", properData);
+      console.log("check id name", data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
@@ -60,7 +55,13 @@ const CelestialCategoryPage = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ListHeader title={pathname.replace("%20", " ")} />
+        <ListHeader
+          title={
+            pathname === "galaxies"
+              ? pathname
+              : `${pathname.replace("%20", " ")}s`
+          }
+        />
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>

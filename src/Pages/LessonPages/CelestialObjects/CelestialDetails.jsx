@@ -24,7 +24,21 @@ const Main = styled.div`
     color: #ea5454f9;
     margin: 0;
     padding: 0;
-    text-decoration: underline;
+    text-decoration: none;
+  }
+  .physicalData {
+    p {
+      margin: 5px;
+      display: flex;
+      column-gap: 20px;
+      justify-content: space-between;
+    }
+
+    div {
+      display: flex;
+      width: max-content;
+      flex-direction: column;
+    }
   }
 `;
 
@@ -90,10 +104,33 @@ const CelestialDetails = () => {
             <Heading>
               {itemData?.englishName ? itemData.englishName : path}
             </Heading>
-            {itemData?.image && <Img src={itemData.image} alt=""/>}
-            {itemData?.info && <Info>{itemData.info.split("\n").map(fact => <Li>{fact}</Li>)}</Info>}
+            {itemData?.image && <Img src={itemData.image} alt="" />}
+            {itemData?.info && (
+              <Info>
+                {itemData.info.split("\n").map((fact) => (
+                  <Li>{fact}</Li>
+                ))}
+              </Info>
+            )}
+
             <h3>Facts</h3>
-            {itemData?.facts && <Info>{itemData.facts.map(fact => <Li>{fact}</Li>)}</Info>}
+            {itemData?.facts && (
+              <Info>
+                {itemData.facts.map((fact) => (
+                  <Li>{fact}</Li>
+                ))}
+              </Info>
+            )}
+            <h3>Physical Data</h3>
+            <div className="physicalData">
+              {itemData?.physicalData &&
+                Object.entries(itemData?.physicalData).map((el) => (
+                  <p key={el[0]}>
+                    <span>{`${el[0]} :`} </span>{" "}
+                    <span dangerouslySetInnerHTML={{ __html: el[1] }} />
+                  </p>
+                ))}
+            </div>
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}
