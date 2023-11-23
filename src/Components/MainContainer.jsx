@@ -27,13 +27,15 @@ const Main = styled.div`
 
   @media (max-width: 1030px) {
     height: calc(95vh - 150px);
-    width: 98vw;
+    width: 100%;
     margin: 0;
     bottom: 10px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     padding: 20px;
+    height: calc(95vh - 110px);
+
   }
 `;
 const MainContainer = ({ children }) => {
