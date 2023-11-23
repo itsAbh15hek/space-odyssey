@@ -41,9 +41,10 @@ const Container = styled(motion.div)`
     background: rgba(0, 0, 0, 0.5);
   }
 `;
-const ListItem = ({ name, path, image }) => {
+const ListItem = ({ name, path, image, style }) => {
   return (
     <Container
+        style={style}
       image={image}
       whileHover={{
         scale: 1.05,

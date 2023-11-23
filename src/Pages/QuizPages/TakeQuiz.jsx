@@ -31,11 +31,11 @@ const Main = styled.div`
 const Form = styled.form`
   height: auto;
   width: 98%;
-  h2 {
+  h3 {
     margin: 20px 0 10px;
   }
   .inputs {
-    padding-left: 30px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     label {
@@ -142,7 +142,7 @@ const TakeQuiz = () => {
           <Form onSubmit={(e) => handleSubmit(e)}>
             {quiz?.questions?.map((ques, quesInd) => (
               <div className="ques-container" key={quesInd}>
-                <h2>{`${quesInd + 1}. ${ques.questionString}`}</h2>
+                <h3>{`${quesInd + 1}. ${ques.questionString}`}</h3>
                 <div className="inputs">
                   {ques?.options?.map((opt, optInd) => (
                     <label key={optInd} htmlFor={`${ques._id}.${optInd}`}>
