@@ -23,6 +23,7 @@ import DeleteAccount from "./Pages/ProfilePages/DeleteAccount";
 import ChangePassword from "./Pages/ProfilePages/ChangePassword";
 import { userRequest } from "./requestMethods";
 import TakeQuiz from "./Pages/QuizPages/TakeQuiz";
+import CreateQuiz from "./Pages/QuizPages/CreateQuiz";
 
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
@@ -63,6 +64,7 @@ function App() {
 
       {/* Quizes */}
       <Route path="/quizes" element={<Quizes />} />
+      <Route path="/quizes/create-quiz" element={<CreateQuiz />} />
       <Route path="/quizes/take-quiz/:id" element={<TakeQuiz />} />
       <Route path="/quizes/view-quiz/:id" element={<ViewQuiz />} />
 
