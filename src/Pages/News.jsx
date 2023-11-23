@@ -7,6 +7,8 @@ import MainContainer from "../Components/MainContainer";
 import ScrollableComponent from "../Components/ScrollableComponent";
 import NPOTD from "../Components/NewsSpecific/NPOTD";
 import FollowedAgencies from "../Components/NewsSpecific/FollowedAgencies";
+import NewsList from "../Components/NewsSpecific/NewsList";
+import { useSelector } from "react-redux";
 
 const Main = styled.div`
   height: 100vh;
@@ -28,6 +30,9 @@ const Heading = styled.h1`
   margin-bottom: 30px;
 `;
 const News = () => {
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
@@ -36,7 +41,9 @@ const News = () => {
         <ScrollableComponent>
           <Heading>News Section</Heading>
           <NPOTD />
-          <FollowedAgencies />
+          {currentUser && <FollowedAgencies />}
+
+          <NewsList />
         </ScrollableComponent>
       </MainContainer>
 
