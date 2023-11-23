@@ -29,14 +29,14 @@ export const signup = async (dispatch, user) => {
   }
 };
 
-export const updateUser = async (dispatch, currentUser, userData) => {
+export const updateUser = async (dispatch, userData) => {
   dispatch(userStart());
   try {
-    const { data } = await userRequest.patch("/users/updateMe", {
+    const res = await userRequest.patch("/users/updateMe", {
       ...userData,
     });
-    console.log("updateUser ran", { ...data, ...currentUser });
-    dispatch(updateSuccess({ ...data, ...currentUser }));
+    console.log("updateUser ran", res.data);
+    dispatch(updateSuccess(res.data));
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));
   }
