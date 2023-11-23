@@ -70,7 +70,7 @@ const CelestialObjects = () => {
                   "https://img.freepik.com/free-photo/glowing-satellite-orbits-planet-star-filled-galaxy-generated-by-ai_188544-9664.jpg?w=1380&t=st=1700489717~exp=1700490317~hmac=e9a8a7994ea279411e77c275350a29bd3dd5e17d430adb0ca71118a3f5ff278d"
                 }
                 name={lesson.DisplayName}
-                path={`${pathname}/${lesson.id}`}
+                path={`/lessons/${pathname}/${lesson.id}`}
               />
             ))}
           </ScrollableComponent>

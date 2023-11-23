@@ -29,7 +29,7 @@ const Quiz = styled(motion.div)`
   align-items: center;
   justify-content: space-around;
   z-index: 2;
-  color: #ea5454f9;
+  color: #ea5454;
   background-color: rgba(45, 64, 89, 0.15);
   border-radius: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -46,25 +46,26 @@ const Quiz = styled(motion.div)`
     align-items: center;
     justify-content: space-between;
     z-index: 2;
-    color: #ea5454f9;
+    color: #ea5454;
     text-shadow: 3px 3px 5px black;
     text-decoration: none;
     background: rgba(0, 0, 0, 0.5);
   }
   h3 {
-    color: #ea5454f9;
+    color: #ea5454;
     text-transform: capitalize;
   }
   p {
     margin-top: 5px;
   }
 
-
   @media (max-width: 580px) {
-    a{
+    a {
       padding: 10px;
     }
-    h3,h4,p{
+    h3,
+    h4,
+    p {
       transform: scale(0.9);
     }
   }

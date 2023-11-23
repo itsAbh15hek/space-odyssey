@@ -4,6 +4,11 @@ import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
+import ScrollableComponent from "../Components/ScrollableComponent";
+import NPOTD from "../Components/NewsSpecific/NPOTD";
+import FollowedAgencies from "../Components/NewsSpecific/FollowedAgencies";
+import NewsList from "../Components/NewsSpecific/NewsList";
+import { useSelector } from "react-redux";
 
 const Main = styled.div`
   height: 100vh;
@@ -16,12 +21,31 @@ const Main = styled.div`
   }
 `;
 
+const Heading = styled.h1`
+  color: #ea5454;
+  width: 100%;
+  font-size: 50px;
+  font-family: "Expletus Sans", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+`;
 const News = () => {
+  const currentUser = useSelector(
+    (state) => state?.user?.currentUser?.data?.user
+  );
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
-      <MainContainer />
+      <MainContainer>
+        <ScrollableComponent>
+          <Heading>News Section</Heading>
+          <NPOTD />
+          {currentUser && <FollowedAgencies />}
+
+          <NewsList />
+        </ScrollableComponent>
+      </MainContainer>
 
       <NavBar />
     </Main>

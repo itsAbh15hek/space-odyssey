@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   z-index: 2;
-  color: #ea5454f9;
+  color: #ea5454;
   background-color: rgba(45, 64, 89, 0.2);
   border-radius: 15px;
   border-top: 1px solid #decdc3;
@@ -55,7 +55,7 @@ const ListItemImages = ({ path, heading, text, image }) => {
           <h2>{heading}</h2>
           <p>{text}</p>
         </Text>
-        <img src={image} />
+        <img src={image} loading="lazy" />
       </Link>
     </Container>
   );

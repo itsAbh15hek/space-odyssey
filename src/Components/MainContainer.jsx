@@ -27,11 +27,11 @@ const Main = styled.div`
 
   @media (max-width: 1030px) {
     height: calc(95vh - 150px);
-    width: 100%;
+    width: 98vw;
     margin: 0;
     bottom: 10px;
   }
-  
+
   @media (max-width: 500px) {
     padding: 20px;
   }

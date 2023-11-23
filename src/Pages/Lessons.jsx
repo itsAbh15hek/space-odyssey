@@ -54,7 +54,7 @@ const Lessons = () => {
               }
               key={lesson.id}
               name={lesson.DisplayName}
-              path={lesson.id}
+              path={`/lessons/${lesson.id}`}
             />
           ))}
         {status === -1 && <p>Something went wrong</p>}

@@ -7,8 +7,8 @@ import ScrollableComponent from "../../Components/ScrollableComponent";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import Loader from "../../Components/Loader";
-import ISSComponents from "../../Components/MissionSpecific.jsx/ISSComponents";
-import RoverComponent from "../../Components/MissionSpecific.jsx/RoverComponent";
+import ISSComponents from "../../Components/MissionSpecific/ISSComponents";
+import RoverComponent from "../../Components/MissionSpecific/RoverComponent";
 
 const Main = styled.div`
   height: 100vh;
@@ -23,7 +23,7 @@ const Main = styled.div`
 `;
 
 const Heading = styled.h1`
-  color: #ea5454f9;
+  color: #ea5454;
   font-size: 50px;
   font-family: "Expletus Sans", sans-serif;
   margin-bottom: 30px;
@@ -44,7 +44,6 @@ const Info = styled.p`
 const Li = styled.p`
   margin: 10px 0 0 0;
 `;
-
 
 const ItemDetails = () => {
   const [status, setStatus] = useState(-1);
@@ -82,7 +81,13 @@ const ItemDetails = () => {
             </Heading>
             {itemData?.image && <Img src={itemData.image} alt="" />}
             {itemData?.info && <Info>{itemData.info}</Info>}
-            {itemData?.facts && <Info>{itemData.facts.map(fact=><Li>{fact}</Li>)}</Info>}
+            {itemData?.facts && (
+              <Info>
+                {itemData.facts.map((fact) => (
+                  <Li>{fact}</Li>
+                ))}
+              </Info>
+            )}
             {path === "ISS" && <ISSComponents />}
             {path === "Mars_rover" && (
               <RoverComponent roverList={itemData.marsAdditional} />

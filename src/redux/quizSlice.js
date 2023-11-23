@@ -23,10 +23,20 @@ export const quizSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
+    clearQuizes: (state) => {
+      state.isFetching = false;
+      state.error = false;
+      state.quizList = [];
+    },
   },
 });
 
-export const { getQuizSuccess, quizFailure, quizStart, submitQuizSuccess } =
-  quizSlice.actions;
+export const {
+  getQuizSuccess,
+  quizFailure,
+  quizStart,
+  submitQuizSuccess,
+  clearQuizes,
+} = quizSlice.actions;
 
 export default quizSlice.reducer;
