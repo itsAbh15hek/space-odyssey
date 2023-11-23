@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Loader from "../Loader";
 
 const Container = styled.div`
-  width: 80%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -15,32 +15,60 @@ const Container = styled.div`
   padding: 50px 50px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 750px) {
+    padding: 30px 30px;
+  }
+
   h2 {
     margin: 0px auto 20px;
   }
+
+
   img {
     height: 400px;
+    width: 100%;
+    object-fit: cover;
     aspect-ratio: 16/9;
     margin: 10px auto;
   }
+
   h3 {
     margin: 10px auto;
     color: #ea5454;
+    @media (max-width: 450px) {
+      font-size: 1rem;
+    }
   }
+
   .info {
     width: 100%;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: space-between;
+    grid-template-areas:"hdurl copyright ";
+
+    @media (max-width: 375px) {
+      grid-template-areas:"copyright" "hdurl" ;
+      row-gap: 10px;
+    }
+
     a {
       text-decoration: none;
       border: 1px solid;
       padding: 5px 15px;
       border-radius: 5px;
       transition: all 0.25s ease;
+      grid-area: hdurl;
+
       &:hover {
         background-color: #ea5454;
       }
+    }
+
+    p {
+      grid-area: copyright;
+
     }
   }
 `;
