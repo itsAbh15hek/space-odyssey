@@ -18,14 +18,27 @@ const Main = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  h3 {
+    align-self: baseline;
+    color: #ea5454f9;
+    margin: 0;
+    padding: 0;
+    text-decoration: underline;
+  }
 `;
 
 const Heading = styled.h1`
-  color: #ea5454;
+  color: #ea5454f9;
   font-size: 50px;
   font-family: "Expletus Sans", sans-serif;
   margin-bottom: 30px;
+
+  @media (max-width: 450px) {
+    font-size: 28px;
+  }
 `;
+
 const Img = styled.img`
   width: 80%;
   aspect-ratio: 16/9;
@@ -35,14 +48,14 @@ const Img = styled.img`
   margin-bottom: 20px;
 `;
 const Info = styled.p`
-  margin: 30px auto;
+  margin: 10px auto 20px;
   text-align: justify;
   line-height: 1.5;
+  width: 100%;
 `;
 const Li = styled.p`
   margin: 10px 0 0 0;
 `;
-
 const CelestialDetails = () => {
   const [status, setStatus] = useState(-1);
   const [itemData, setItemData] = useState({});
@@ -77,15 +90,10 @@ const CelestialDetails = () => {
             <Heading>
               {itemData?.englishName ? itemData.englishName : path}
             </Heading>
-            {itemData?.image && <Img src={itemData.image} alt="" />}
-            {itemData?.info && <Info>{itemData.info}</Info>}
-            {itemData?.facts && (
-              <Info>
-                {itemData.facts.map((fact) => (
-                  <Li>{fact}</Li>
-                ))}
-              </Info>
-            )}
+            {itemData?.image && <Img src={itemData.image} alt=""/>}
+            {itemData?.info && <Info>{itemData.info.split("\n").map(fact => <Li>{fact}</Li>)}</Info>}
+            <h3>Facts</h3>
+            {itemData?.facts && <Info>{itemData.facts.map(fact => <Li>{fact}</Li>)}</Info>}
           </ScrollableComponent>
         )}
         {status === -1 && <p>Something went wrong</p>}

@@ -10,11 +10,11 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   z-index: 2;
-  color: #ea5454;
+  color: #ea5454f9;
   background-color: rgba(45, 64, 89, 0.2);
-  border-radius: 15px;
-  border-top: 1px solid #decdc3;
-  border-left: 1px solid #decdc3;
+  border-radius: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
   margin: 20px auto;
   font-size: 30px;
   letter-spacing: 2px;
@@ -35,14 +35,52 @@ const Container = styled.div`
     border-radius: 5px;
     object-fit: contain;
   }
+
+
+  @media (max-width: 800px) {
+    img {
+      height: 150px;
+      width: 150px;
+    }
+  }
+  @media (max-width: 430px) {
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+
 `;
 const Text = styled.div`
   width: calc(95vh - 300px);
+
   h2 {
     font-size: 30px;
   }
+
   p {
     font-size: 15px;
+    color: #a2a1a1;
+  }
+
+  @media (max-width: 800px) {
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 `;
 const ListItemImages = ({ path, heading, text, image }) => {
