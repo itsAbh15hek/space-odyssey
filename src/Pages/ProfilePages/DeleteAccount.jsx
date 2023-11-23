@@ -18,27 +18,45 @@ const Main = styled.div`
   }
 `;
 
+
 const Form = styled.form`
-  height: 80%;
-  width: max-content;
+  width: 100%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: auto;
+  overflow: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 
   h1 {
     font-family: "Expletus Sans", sans-serif;
-    font-size: 80px;
+    font-size: 60px;
     color: #ea5455;
     margin-bottom: 40px;
+
+    @media (max-width: 800px) {
+      font-size: 45px;
+    }
+    @media (max-width: 430px) {
+      font-size: 38px;
+      font-weight: lighter;
+      margin: 0;
+    }
+
   }
   span {
     margin: 10px;
   }
 `;
 const Input = styled.input`
-  width: 600px;
+  width: 100%;
   padding: 20px 30px;
   border-radius: 30px;
   font-size: 20px;
@@ -46,6 +64,10 @@ const Input = styled.input`
   background-color: #decdc3;
   color: rgba(45, 64, 89, 1);
   outline: none;
+
+  @media (max-width: 800px) {
+    padding: 10px 20px;
+  }
 `;
 const Button = styled.button`
   margin: 20px;
@@ -55,6 +77,11 @@ const Button = styled.button`
   font-size: 20px;
 
   font-family: "Expletus Sans", sans-serif;
+
+  @media (max-width: 430px) {
+    padding: 10px 40px;
+    margin-top: -0px;
+  }
 `;
 
 const DeleteAccount = () => {

@@ -32,8 +32,10 @@ const Main = styled.div`
     bottom: 10px;
   }
   
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     padding: 20px;
+    height: calc(95vh - 110px);
+    
   }
 `;
 const MainContainer = ({ children }) => {

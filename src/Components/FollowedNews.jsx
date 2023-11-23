@@ -35,7 +35,7 @@ const Container = styled.div`
       font-weight: normal;
     }
   }
-  
+
   @media (max-width: 580px) {
     h1 {
       font-size: 18px;
@@ -57,7 +57,7 @@ const Agencies = styled.div`
     img {
       height: 50px;
       width: 50px;
-      object-fit: cover;
+      object-fit: contain;
       margin: 0 0 10px;
     }
 
@@ -95,10 +95,10 @@ const FollowedNews = ({AgencyList}) => {
             <Agencies>
                 {AgencyList?.map((agency) => (
                     // <div className="agency">
-                        <div key={agency?.name} className="agency">
-                            <img src={agency?.image} alt=""/>
-                            <p>{agency?.name}</p>
-                        </div>
+                    <div key={agency?.name} className="agency">
+                        <img src={agency?.image} alt=""/>
+                        <p>{agency?.name}</p>
+                    </div>
                     // </div>
                 ))}
             </Agencies>
