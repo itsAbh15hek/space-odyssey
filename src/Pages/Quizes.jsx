@@ -30,10 +30,13 @@ const Main = styled.div`
 
 const Quizes = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state?.user?.currentUser);
   const quizList = useSelector((state) => state?.quizes?.quizList);
   useEffect(() => {
-    getQuizes(dispatch);
-  }, []);
+    console.log("currentUser", currentUser);
+
+    getQuizes(dispatch, currentUser);
+  }, [currentUser]);
 
   return (
     <Main>
@@ -45,7 +48,7 @@ const Quizes = () => {
           {quizList?.map((quiz) => (
             <ListItem
               name={quiz.topic}
-              path={`/quizes/take-quiz/${quiz._id}`}
+              path={currentUser ? `/quizes/take-quiz/${quiz._id}` : "/login"}
               image={
                 "https://thumbs.dreamstime.com/z/question-mark-seamless-pattern-trivia-poster-design-template-quiz-loading-page-random-punctuation-marks-background-vector-182361333.jpg?w=768"
               }
