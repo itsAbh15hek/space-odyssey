@@ -1,6 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 const Container = styled.div`
   width: 80%;
@@ -28,36 +26,13 @@ const Container = styled.div`
     }
   }
 `;
-const Agencies = styled.div`
-  h3 {
-    margin-bottom: 20px;
-  }
-  .agency-list {
-    img {
-      height: 40px;
-      width: 40px;
-      object-fit: contain;
-      margin-right: 20px;
-    }
-  }
-`;
-const FollowedAgencies = () => {
-  const follows = useSelector(
-    (state) => state?.user?.currentUser?.data?.user?.follows
-  );
+
+const NewsList = () => {
   return (
     <Container>
-      <Agencies>
-        <h3>Followed Agencies</h3>
-        <div className="agency-list">
-          {follows?.map((agency) => (
-            <img src={agency.image} />
-          ))}
-        </div>
-      </Agencies>
-      <Link to={"/user/settings/editprofile"}>Change</Link>
+      <h1>Latest Space News</h1>
     </Container>
   );
 };
 
-export default FollowedAgencies;
+export default NewsList;

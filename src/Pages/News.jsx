@@ -20,7 +20,7 @@ const Main = styled.div`
 `;
 
 const Heading = styled.h1`
-  color: #ea5454f9;
+  color: #ea5454;
   width: 100%;
   font-size: 50px;
   font-family: "Expletus Sans", sans-serif;

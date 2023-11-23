@@ -88,7 +88,7 @@ const Container = styled.div`
   }
   button {
     color: #ea5455;
-    background-color: #decdc332;
+    background-color: transparent;
     border: 1px solid;
     padding: 15px 30px;
     margin: 50px auto;

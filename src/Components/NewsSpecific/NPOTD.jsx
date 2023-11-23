@@ -25,7 +25,7 @@ const Container = styled.div`
   }
   h3 {
     margin: 10px auto;
-    color: #ea5454f9;
+    color: #ea5454;
   }
   .info {
     width: 100%;
@@ -39,7 +39,7 @@ const Container = styled.div`
       border-radius: 5px;
       transition: all 0.25s ease;
       &:hover {
-        background-color: #ea5454f9;
+        background-color: #ea5454;
       }
     }
   }
@@ -70,7 +70,9 @@ const NPOTD = () => {
           <img src={image.url} />
           <h3>{image.title}</h3>
           <div className="info">
-            <a href={image.hdurl}>View in HD</a>
+            <a href={image.hdurl} target="_blank">
+              View in HD
+            </a>
             <p>{` ©${image.copyright}`}</p>
           </div>
         </>
