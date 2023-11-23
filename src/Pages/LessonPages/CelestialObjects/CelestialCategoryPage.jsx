@@ -60,7 +60,7 @@ const CelestialCategoryPage = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ListHeader title={pathname.replace("%20"," ")} />
+        <ListHeader title={pathname.replace("%20", " ")} />
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
@@ -71,7 +71,7 @@ const CelestialCategoryPage = () => {
                   "https://img.freepik.com/free-photo/spaceship-orbits-dark-galaxy-glowing-blue-comet-generated-by-ai_188544-9662.jpg?w=1380&t=st=1700488278~exp=1700488878~hmac=90afcd8c877cfcf35d9b358b9d1c7ce035b6b91093b2a683c1d4c0d9ca0e5490"
                 }
                 name={lesson.englishName}
-                path={`celestialobjects/${pathname}/${lesson.id}`}
+                path={`/lessons/celestialobjects/${pathname}/${lesson.id}`}
               />
             ))}
           </ScrollableComponent>

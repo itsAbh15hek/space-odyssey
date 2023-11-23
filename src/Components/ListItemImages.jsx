@@ -55,7 +55,7 @@ const ListItemImages = ({ path, heading, text, image }) => {
           <h2>{heading}</h2>
           <p>{text}</p>
         </Text>
-        <img src={image} />
+        <img src={image} loading="lazy" />
       </Link>
     </Container>
   );

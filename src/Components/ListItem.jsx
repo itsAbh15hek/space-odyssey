@@ -33,6 +33,7 @@ const Container = styled(motion.div)`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    text-transform: capitalize;
     z-index: 2;
     color: #ea5454;
     text-shadow: 3px 3px 5px black;
@@ -50,7 +51,7 @@ const ListItem = ({ name, path, image }) => {
       }}
       whileTap={{ scale: 1.03 }}
     >
-      <Link to={`/lessons/${path}`}>{name}</Link>
+      <Link to={path}>{name}</Link>
     </Container>
   );
 };
