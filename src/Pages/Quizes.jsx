@@ -21,7 +21,7 @@ const Quizes = () => {
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
-      <MainContainer />
+      <MainContainer></MainContainer>
 
       <NavBar />
     </Main>
