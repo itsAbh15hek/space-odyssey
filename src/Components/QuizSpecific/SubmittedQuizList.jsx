@@ -8,11 +8,13 @@ const QuizContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
   padding-top: 30px;
   h1 {
+    align-self: baseline;
     font-family: "Expletus Sans", sans-serif;
-    font-size: 50px;
+    //font-size: 50px;
+    //font-weight: lighter;
     color: #ea5455;
     margin-bottom: 5px;
     text-align: center;
@@ -20,7 +22,7 @@ const QuizContainer = styled.div`
 `;
 const Quiz = styled(motion.div)`
   height: 110px;
-  width: 95%;
+  //width: 95%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -29,9 +31,9 @@ const Quiz = styled(motion.div)`
   z-index: 2;
   color: #ea5454f9;
   background-color: rgba(45, 64, 89, 0.15);
-  border-radius: 15px;
-  border-top: 1px solid #decdc3;
-  border-left: 1px solid #decdc3;
+  border-radius: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
   margin: 30px auto;
   letter-spacing: 2px;
   user-select: none;
@@ -56,11 +58,21 @@ const Quiz = styled(motion.div)`
   p {
     margin-top: 5px;
   }
+
+
+  @media (max-width: 580px) {
+    a{
+      padding: 10px;
+    }
+    h3,h4,p{
+      transform: scale(0.9);
+    }
+  }
 `;
 const SubmittedQuizList = ({ quizList }) => {
   return (
     <QuizContainer>
-      <h1>Quizes Taken</h1>
+      <h1>Quizes Submitted</h1>
       <div className="quizList">
         {quizList.map((quiz) => (
           <Quiz

@@ -1,5 +1,11 @@
-import { publicRequest } from "../../requestMethods";
-import { loginSuccess, userFailure, userStart } from "../userSlice";
+import { publicRequest, userRequest } from "../../requestMethods";
+import {
+  deleteUserSuccess,
+  loginSuccess,
+  updateSuccess,
+  userFailure,
+  userStart,
+} from "../userSlice";
 
 export const login = async (dispatch, user) => {
   dispatch(userStart());
@@ -18,6 +24,45 @@ export const signup = async (dispatch, user) => {
     const res = await publicRequest.post("/users/signup", user);
     // console.log("signUpRes", res.data);
     login(dispatch, { username: user.username, password: user.password });
+  } catch (error) {
+    dispatch(userFailure(error?.response?.data?.message));
+  }
+};
+
+export const updateUser = async (dispatch, currentUser, userData) => {
+  dispatch(userStart());
+  try {
+    const { data } = await userRequest.patch("/users/updateMe", {
+      ...userData,
+    });
+    console.log("updateUser ran", { ...data, ...currentUser });
+    dispatch(updateSuccess({ ...data, ...currentUser }));
+  } catch (error) {
+    dispatch(userFailure(error?.response?.data?.message));
+  }
+};
+
+export const updatePassword = async (dispatch, passwords) => {
+  dispatch(userStart());
+  try {
+    const res = await userRequest.patch("/users/updateMyPassword", {
+      ...passwords,
+    });
+    dispatch(updateSuccess(res.data));
+  } catch (error) {
+    dispatch(userFailure(error?.response?.data?.message));
+  }
+};
+
+export const deleteUser = async (dispatch, password) => {
+  console.log("pass", { password: password });
+  dispatch(userStart());
+  try {
+    const res = await userRequest.post("/users/deleteMe", {
+      password: password,
+    });
+    console.log("delete", res);
+    dispatch(deleteUserSuccess());
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));
   }

@@ -18,7 +18,7 @@ export const userSlice = createSlice({
       state.errorMsg = null;
       state.currentUser = action.payload;
     },
-    refreshSuccess: (state, action) => {
+    updateSuccess: (state, action) => {
       state.isFetching = false;
       state.error = false;
       state.errorMsg = null;
@@ -55,7 +55,7 @@ export const {
   loginSuccess,
   deleteUserSuccess,
   logoutSuccess,
-  refreshSuccess,
+  updateSuccess,
   userFailure,
   logOut,
 } = userSlice.actions;
