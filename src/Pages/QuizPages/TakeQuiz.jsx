@@ -7,6 +7,7 @@ import staryBG from "../../assets/staryBG.mp4";
 import NavBar from "../../Components/NavBar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { publicRequest, userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 const Main = styled.div`
   height: 100vh;
@@ -102,6 +103,7 @@ const Form = styled.form`
 `;
 const TakeQuiz = () => {
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state?.user?.currentUser);
   const id = useLocation().pathname.split("/")[3];
   const [quiz, setQuiz] = useState({});
   const [answers, setAnswers] = useState([]);
@@ -131,7 +133,8 @@ const TakeQuiz = () => {
   };
 
   useEffect(() => {
-    getQuiz();
+    if (!currentUser) navigate("/login");
+    if (currentUser) getQuiz();
   }, []);
   useEffect(() => {
     const data = [];
