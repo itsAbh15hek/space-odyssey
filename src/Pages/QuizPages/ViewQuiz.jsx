@@ -130,7 +130,7 @@ const ViewQuiz = () => {
                             </div>
                             <div className="option-div">
                                 <p>{`Correct Option: ${qna?.correctOption}`}</p>
-                                <p>{`Choosen Option: ${quizDetails?.choosenOptions[index]}`}</p>
+                                <p>{`Choosen Option: ${quizDetails?.choosenOptions[index]?quizDetails?.choosenOptions[index]:"none"}`}</p>
                             </div>
                         </QuizOptionsAnswersContainer>
                     </div>))}

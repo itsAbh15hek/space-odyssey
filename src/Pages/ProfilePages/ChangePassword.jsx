@@ -109,7 +109,9 @@ const ChangePassword = () => {
         setOldPassword("");
       }
     } catch (error) {
-      setMessage({ status: -1, message: error?.response?.data?.message });
+      // setMessage({ status: -1, message: error?.response?.data?.message });
+      console.log(error)
+      alert(error?.response?.data?.message);
     }
   };
 

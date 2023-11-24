@@ -26,9 +26,9 @@ const Container = styled.div`
 
 
   img {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: contain;
     aspect-ratio: 16/9;
     margin: 10px auto;
   }

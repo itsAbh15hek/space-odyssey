@@ -17,7 +17,15 @@ const Main = styled.div`
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 5px 5px 0 0;
   color: #e5e5e5;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   //max-width: 768px;
 
   .text {
@@ -27,21 +35,16 @@ const Main = styled.div`
   }
 
   @media (max-width: 1030px) {
-    height: calc(95vh - 150px);
     width: 100%;
     margin: 0;
     bottom: 10px;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 790px) {
+    height: calc(95vh - 150px);
     padding: 20px;
   }
-
-  @media (max-width: 600px) {
-    padding: 20px;
-    height: calc(95vh - 110px);
-
-  }
+  
 `;
 const MainContainer = ({ children }) => {
   return <Main>{children}</Main>;

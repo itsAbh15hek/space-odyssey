@@ -67,7 +67,7 @@ const UserContainer = styled.div`
 
       @media (max-width: 650px) {
         align-items: center;
-        max-width: 250px;
+        max-width: 270px;
       }
     }
 
