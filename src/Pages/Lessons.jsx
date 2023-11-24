@@ -50,7 +50,7 @@ const Lessons = () => {
           lessons.map((lesson) => (
             <ListItem
               image={
-                "https://img.freepik.com/free-photo/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg?w=1380&t=st=1700488570~exp=1700489170~hmac=8ba5ad7121161d05b573607efc41458719265e2bf73bdd565d83726f8440af06"
+                "https://firebasestorage.googleapis.com/v0/b/space-odyssey-28b84.appspot.com/o/background%2Flow-angle-shot-mesmerizing-starry-sky.jpg?alt=media&token=aafa69db-bc6b-45b6-9393-8a01acb37227"
               }
               key={lesson.id}
               name={lesson.DisplayName}

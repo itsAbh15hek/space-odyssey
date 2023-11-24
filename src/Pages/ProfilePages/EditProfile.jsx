@@ -22,6 +22,7 @@ const Main = styled.div`
 `;
 const Container = styled.div`
   width: 100%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,10 +31,19 @@ const Container = styled.div`
 
   h1 {
     font-family: "Expletus Sans", sans-serif;
-    font-size: 80px;
+    font-size: 60px;
     color: #ea5455;
     margin-bottom: 40px;
+
+    @media (max-width: 800px) {
+      font-size: 45px;
+    }
+    @media (max-width: 430px) {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
   }
+
   a {
     margin: 20px;
     padding: 14px 20px;
@@ -43,12 +53,14 @@ const Container = styled.div`
     text-align: center;
     text-decoration: none;
     transition: all 0.25s ease;
+
     &:hover {
       letter-spacing: 1.2px;
       color: #ea5455;
       border: 1px solid #decdc3;
     }
   }
+
   form {
     width: 100%;
     display: flex;
@@ -56,45 +68,59 @@ const Container = styled.div`
     align-items: center;
     justify-content: start;
   }
+
   h2 {
     font-size: 30px;
     text-align: center;
     margin: 50px auto 30px;
+
+    @media (max-width: 430px) {
+      margin: 40px auto 15px;
+    }
   }
+
   input {
     background-color: transparent;
     outline: none;
     border: 1px solid;
     border-radius: 30px;
-    width: 600px;
+    width: 100%;
     font-size: 15px;
     padding: 15px 30px;
     margin: 0 auto;
   }
+
   h3 {
     font-size: 20px;
     margin: 20px auto;
   }
+
   .container {
     display: flex;
     width: 100%;
     align-items: start;
     justify-content: space-around;
 
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+
     div {
       width: 95%;
       text-align: center;
     }
   }
+
   button {
     color: #ea5455;
-    background-color: transparent;
+    background-color: #decdc3;
     border: 1px solid;
     padding: 15px 30px;
     margin: 50px auto;
     font-weight: 600;
     font-size: 20px;
     border-radius: 30px;
+
     &:hover {
       color: #decdc3;
       background-color: #ea5455;
@@ -195,8 +221,8 @@ const EditProfile = () => {
                   value={name}
                 />
                 <h2>Manage News Agencies</h2>
-                {!unfollowing[0] && <Loader />}
-                {unfollowing[0] && (
+                {!allAgencies[0] && <Loader />}
+                {allAgencies[0] && (
                   <>
                     <div className="container">
                       <div className="following">

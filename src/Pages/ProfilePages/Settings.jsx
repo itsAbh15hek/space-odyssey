@@ -17,7 +17,8 @@ const Main = styled.div`
 `;
 const Container = styled.div`
   height: 80%;
-  width: max-content;
+  width: 100%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,16 +27,22 @@ const Container = styled.div`
 
   h1 {
     font-family: "Expletus Sans", sans-serif;
-    font-size: 80px;
+    font-size: 60px;
     color: #ea5455;
     margin-bottom: 40px;
+    font-weight: normal;
+
+    @media (max-width: 800px) {
+      font-size: 45px;
+    }
+
   }
   a {
     margin: 20px;
     padding: 14px 20px;
     border: 1px solid #ea5455;
     border-radius: 5px;
-    width: 600px;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     transition: all 0.25s ease;

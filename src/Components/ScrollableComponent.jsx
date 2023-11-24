@@ -22,11 +22,11 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    width: 95%;
+    width: 100%;
     z-index: 1;
     height: auto;
     background: transparent;
-    min-width: 1000px;
+    /* max-width: 1000px; */
   }
 `;
 const ScrollableComponent = ({ children }) => {

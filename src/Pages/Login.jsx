@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls/apiCalls";
 import Loader from "../Components/Loader";
+import { clearProfile } from "../redux/profileSlice";
+import { clearQuizes } from "../redux/quizSlice";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -120,6 +122,8 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(clearProfile());
+    dispatch(clearQuizes());
     login(dispatch, userData);
   };
   useEffect(() => {

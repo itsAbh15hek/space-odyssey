@@ -37,14 +37,9 @@ const CelestialCategoryPage = () => {
         `/lessons/celestialobjects/${pathname}`
       );
       const properData = data.data;
-      // if (pathname === "celestialCategoryPage") {
-      //   properData.shift();
-      //   properData.shift();
-      //   properData.shift();
-      //   properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
-      // }
+
       setLessonCategory(properData);
-      console.log("ma******d", properData);
+      console.log("check id name", data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
@@ -60,7 +55,13 @@ const CelestialCategoryPage = () => {
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <ListHeader title={pathname.replace("%20", " ")} />
+        <ListHeader
+          title={
+            pathname === "galaxies"
+              ? pathname
+              : `${pathname.replace("%20", " ")}s`
+          }
+        />
         {status === 1 && <Loader />}
         {status === 0 && (
           <ScrollableComponent>
@@ -68,7 +69,7 @@ const CelestialCategoryPage = () => {
               <ListItem
                 key={lesson.id}
                 image={
-                  "https://img.freepik.com/free-photo/spaceship-orbits-dark-galaxy-glowing-blue-comet-generated-by-ai_188544-9662.jpg?w=1380&t=st=1700488278~exp=1700488878~hmac=90afcd8c877cfcf35d9b358b9d1c7ce035b6b91093b2a683c1d4c0d9ca0e5490"
+                  "https://firebasestorage.googleapis.com/v0/b/space-odyssey-28b84.appspot.com/o/background%2Fglowing-spaceship-orbits-planet-starry-galaxy-generated-by-ai.jpg?alt=media&token=0092da5f-ca71-4d32-a816-b59383fbada2"
                 }
                 name={lesson.englishName}
                 path={`/lessons/celestialobjects/${pathname}/${lesson.id}`}

@@ -57,7 +57,7 @@ const Agencies = styled.div`
     img {
       height: 50px;
       width: 50px;
-      object-fit: cover;
+      object-fit: contain;
       margin: 0 0 10px;
     }
 

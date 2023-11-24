@@ -28,6 +28,13 @@ const Heading = styled.h1`
   font-family: "Expletus Sans", sans-serif;
   text-align: center;
   margin-bottom: 30px;
+
+
+  @media (max-width: 750px) {
+    font-size: 30px;
+  }
+  
+  
 `;
 const News = () => {
   const currentUser = useSelector(
@@ -42,7 +49,6 @@ const News = () => {
           <Heading>News Section</Heading>
           <NPOTD />
           {currentUser && <FollowedAgencies />}
-
           <NewsList />
         </ScrollableComponent>
       </MainContainer>

@@ -12,28 +12,41 @@ import ListItem from "../Components/ListItem";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
+
   video {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   h1 {
     color: #ea5454;
     width: 100%;
     font-size: 50px;
     font-family: "Expletus Sans", sans-serif;
     text-align: center;
-    margin: 30px auto;
+    margin-bottom: 30px;
+
+    @media (max-width: 750px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: 40px;
+    }
   }
 `;
 
 const Quizes = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state?.user?.currentUser);
   const quizList = useSelector((state) => state?.quizes?.quizList);
   useEffect(() => {
-    getQuizes(dispatch);
-  }, []);
+    console.log("currentUser", currentUser);
+
+    getQuizes(dispatch, currentUser);
+  }, [currentUser]);
 
   return (
     <Main>

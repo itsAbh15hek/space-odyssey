@@ -13,6 +13,7 @@ import { getProfile } from "../redux/apiCalls/profileApiCalls";
 import { logOut } from "../redux/userSlice";
 import { clearProfile } from "../redux/profileSlice";
 import Loader from "../Components/Loader";
+import { clearQuizes } from "../redux/quizSlice";
 
 const Main = styled.div`
   height: 100vh;
@@ -50,6 +51,14 @@ const UserContainer = styled.div`
       font-size: 50px;
       color: #ea5455;
       margin-bottom: 5px;
+    }
+    .options {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      * {
+        margin: 10px;
+      }
     }
 
     @media (max-width: 580px) {
@@ -102,6 +111,13 @@ const UserContainer = styled.div`
     }
   }
 `;
+
+const credentialStyle = {
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+};
+
 const Account = () => {
   const currentUser = useSelector((state) => state?.user?.currentUser);
   const navigate = useNavigate();
@@ -125,6 +141,7 @@ const Account = () => {
   const handleLogout = () => {
     dispatch(logOut());
     dispatch(clearProfile());
+    dispatch(clearQuizes());
   };
 
   return (
@@ -137,11 +154,14 @@ const Account = () => {
           <ScrollableComponent>
             <UserContainer>
               <div className="credentials">
-                <div>
+                <div style={credentialStyle}>
                   <h1>{profileDetils?.name}</h1>
                   <h3>{`@${profileDetils?.username}`}</h3>
                 </div>
                 <div className="options">
+                  {currentUser?.data?.user?.isAdmin && (
+                    <Link to={"/quizes/create-quiz"}>Create Quiz</Link>
+                  )}
                   <Link to={"/user/settings"}>Settings</Link>
                   <a onClick={handleLogout}>Logout</a>
                 </div>
