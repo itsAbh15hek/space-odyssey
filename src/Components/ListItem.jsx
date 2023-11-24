@@ -48,27 +48,28 @@ const Container = styled(motion.div)`
     @media (max-width: 375px) {
       font-size: 18px;
     }
-    
   }
 `;
 
-const dull = {fontSize: "1rem", color: "#ffffff69"};
+const dull = { fontSize: "1rem", color: "#ffffff69" };
 
-
-const ListItem = ({name, path, image, style, right}) => {
-    return (<Container
-            style={style}
-            image={image}
-            whileHover={{
-                scale: 1.05, transition: {duration: 0.1},
-            }}
-            whileTap={{scale: 1.03}}
-        >
-            <Link to={path}>
-                <span>{name}</span>
-                {right ? <span style={dull}>({right})</span> : ""}
-            </Link>
-        </Container>);
+const ListItem = ({ name, path, image, style, right }) => {
+  return (
+    <Container
+      style={style}
+      image={image}
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 0.1 },
+      }}
+      whileTap={{ scale: 1.03 }}
+    >
+      <Link to={path}>
+        <span>{name}</span>
+        {right ? <span style={dull}>({right})</span> : ""}
+      </Link>
+    </Container>
+  );
 };
 
 export default ListItem;

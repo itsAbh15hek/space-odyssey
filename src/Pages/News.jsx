@@ -29,12 +29,9 @@ const Heading = styled.h1`
   text-align: center;
   margin-bottom: 30px;
 
-
   @media (max-width: 750px) {
     font-size: 30px;
   }
-  
-  
 `;
 const News = () => {
   const currentUser = useSelector(

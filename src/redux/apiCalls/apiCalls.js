@@ -49,6 +49,7 @@ export const updatePassword = async (dispatch, passwords) => {
       ...passwords,
     });
     dispatch(updateSuccess(res.data));
+    confirm("Password updated Successfully!");
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));
   }

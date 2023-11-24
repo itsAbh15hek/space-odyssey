@@ -11,12 +11,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, useAnimationControls } from "framer-motion";
 
-const Navigation = styled.div`
+const Navigation = styled(motion.div)`
   background-color: transparent;
   position: absolute;
   bottom: 0;
   z-index: 10;
-
 
   height: 120px;
   width: 100vw;
@@ -113,25 +112,7 @@ const List = styled.ul`
     li {
       transform: scale(0.7);
     }
-
   }
-  //
-  //@media (max-width: 650px) {
-  //  transform: scale(0.9);
-  //  width: 80%;
-  //}
-  //
-  //@media (max-width: 500px) {
-  //  transform: scale(0.9);
-  //  width: 95%;
-  //}
-  //
-  //@media (max-width: 390px) {
-  //  transform: scale(0.9)
-  //}
-
-
-
 `;
 
 const NavBar = () => {
@@ -188,7 +169,11 @@ const NavBar = () => {
   }, [pathname]);
 
   return (
-    <Navigation>
+    <Navigation
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", duration: 1.5, delay: 0 }}
+    >
       <List>
         {navs.map((nav) => (
           <li

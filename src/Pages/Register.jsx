@@ -7,6 +7,8 @@ import MainContainer from "../Components/MainContainer";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/apiCalls/apiCalls";
+import Loader from "../Components/Loader";
+import { errorReset } from "../redux/userSlice";
 
 const Main = styled.div`
   height: 100vh;
@@ -66,6 +68,9 @@ const Register = () => {
   const currentUser = useSelector(
     (state) => state?.user?.currentUser?.data?.user
   );
+  const isFetching = useSelector((state) => state.user.isFetching);
+  const errorMsg = useSelector((state) => state.user.errorMsg);
+  const error = useSelector((state) => state.user.error);
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -77,55 +82,63 @@ const Register = () => {
 
   useEffect(() => {
     if (currentUser) navigate("/user");
+    dispatch(errorReset());
+  }, [currentUser]);
+  useEffect(() => {
+    dispatch(errorReset());
   }, []);
   return (
     <Main>
       <video src={staryBG} autoPlay loop muted></video>
       <Header />
       <MainContainer>
-        <Form onSubmit={(e) => handleSubmit(e)} className="register">
-          <h1>Create an Account</h1>
+        {isFetching && <Loader />}
+        {!isFetching && (
+          <Form onSubmit={(e) => handleSubmit(e)} className="register">
+            <h1>Create an Account</h1>
 
-          <Input
-            required
-            type="text"
-            placeholder="Name"
-            name="name"
-            onChange={(e) => handleChange(e)}
-          />
-          <Input
-            required
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={(e) => handleChange(e)}
-          />
-          <Input
-            required
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={(e) => handleChange(e)}
-          />
-          <Input
-            required
-            type="text"
-            placeholder="Password"
-            name="password"
-            onChange={(e) => handleChange(e)}
-          />
-          <Input
-            required
-            type="text"
-            placeholder="Confirm Password"
-            name="passwordConfirm"
-            onChange={(e) => handleChange(e)}
-          />
-          <Button type="submit">Register</Button>
-          <span>
-            <Link to={"/login"}>Already have an Account</Link>
-          </span>
-        </Form>
+            <Input
+              required
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={(e) => handleChange(e)}
+            />
+            <Input
+              required
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={(e) => handleChange(e)}
+            />
+            <Input
+              required
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={(e) => handleChange(e)}
+            />
+            <Input
+              required
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={(e) => handleChange(e)}
+            />
+            <Input
+              required
+              type="password"
+              placeholder="Confirm Password"
+              name="passwordConfirm"
+              onChange={(e) => handleChange(e)}
+            />
+            {error && <span>{errorMsg}</span>}
+            <Button type="submit">Register</Button>
+            <span>
+              <Link to={"/login"}>Already have an Account? Login</Link>
+            </span>
+          </Form>
+        )}
       </MainContainer>
 
       <NavBar />

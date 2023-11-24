@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
-const Main = styled.div`
+const Main = styled(motion.div)`
   height: calc(95vh - 200px);
   max-width: 1560px;
   width: 98vw;
@@ -44,10 +45,17 @@ const Main = styled.div`
     height: calc(95vh - 150px);
     padding: 20px;
   }
-  
 `;
 const MainContainer = ({ children }) => {
-  return <Main>{children}</Main>;
+  return (
+    <Main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: "spring", duration: 1.2, delay: 0.6 }}
+    >
+      {children}
+    </Main>
+  );
 };
 
 export default MainContainer;
