@@ -31,18 +31,22 @@ const Main = styled.div`
 const Form = styled.form`
   height: auto;
   width: 98%;
+
   h3 {
     margin: 20px 0 10px;
   }
+
   .inputs {
     padding-left: 20px;
     display: flex;
     flex-direction: column;
+
     label {
       margin: 5px 0;
       display: flex;
       align-items: center;
       justify-content: start;
+
       input {
         appearance: none;
         background-color: transparent;
@@ -53,23 +57,32 @@ const Form = styled.form`
         border-radius: 3px;
         display: grid;
         place-content: center;
+
         &::before {
           content: "";
           width: 5px;
           height: 5px;
           transform: scale(0);
           transition: 120ms transform ease-in-out;
-          box-shadow: inset 5px 5px white;
+          box-shadow: inset 5px 5px #ea5455;
         }
+
+        &:checked {
+          border-color: #ea5455;
+        }
+
         &:checked::before {
           transform: scale(1);
         }
       }
+
       span {
         margin-left: 10px;
+        color: #dcdcdc;
       }
     }
   }
+
   button {
     font-size: 20px;
     border: 1px solid;
@@ -80,6 +93,7 @@ const Form = styled.form`
     background-color: transparent;
     color: #ea5454;
     display: block;
+
     &:hover {
       background-color: #ea5454;
       color: #decdc3;

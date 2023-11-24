@@ -11,7 +11,7 @@ import Loader from "../../Components/Loader";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
-
+  
   video {
     position: absolute;
     width: 100%;
@@ -29,11 +29,22 @@ const Main = styled.div`
   }
 `;
 const Container = styled.form`
-  width: 80%;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.04);
   border-radius: 5px;
   margin: 0 auto;
   padding: 20px 20px 40px;
+
+  @media (max-width: 800px) {
+    padding: 20px 10px;
+    margin: 0;
+
+    label {
+      transform: scale(0.9);
+    }
+
+  }
+
   .add-ques {
     text-decoration: none;
     font-size: 15px;
@@ -47,11 +58,13 @@ const Container = styled.form`
     color: #ea5454;
     height: min-content;
     width: 150px;
+
     &:hover {
       background-color: #ea5454;
       color: #decdc3;
     }
   }
+
   .crt {
     display: block;
     text-decoration: none;
@@ -65,34 +78,52 @@ const Container = styled.form`
     background-color: transparent;
     color: #ea5454;
     height: min-content;
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
+
     &:hover {
       background-color: #ea5454;
       color: #decdc3;
     }
   }
+
   .topic {
     display: flex;
     align-items: center;
     justify-content: start;
     width: 100%;
     margin: 10px auto 40px;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      
+    
+
+    }
+
     span {
       font-size: 40px;
       color: #ea5454;
     }
+
     input {
       margin-left: 20px;
       padding: 10px 30px;
       outline: none;
       border: none;
       border-bottom: 1px solid;
-      border-radius: 20px;
+      border-radius: 10px;
       background-color: transparent;
       font-size: 15px;
       width: 100%;
+      @media (max-width: 800px) {
+        margin-left:0;
+      }
     }
   }
+
 `;
 const QuesContainer = styled.div`
   display: flex;
@@ -107,6 +138,13 @@ const QuesContainer = styled.div`
     justify-content: start;
     width: 100%;
     margin: 10px auto;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
     span {
       font-size: 30px;
       color: #ea5454;
@@ -117,10 +155,14 @@ const QuesContainer = styled.div`
       outline: none;
       border: none;
       border-bottom: 1px solid;
-      border-radius: 20px;
+      border-radius: 10px;
       background-color: transparent;
       font-size: 15px;
       width: 100%;
+      @media (max-width: 800px) {
+        margin-left:0;
+      }
+      
     }
   }
 
@@ -130,16 +172,33 @@ const QuesContainer = styled.div`
     font-size: 15px;
     margin: 10px;
     width: 100%;
+
+    @media (max-width: 800px) {
+      margin-left:0;
+    }
+    
     li {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+
+      @media (max-width: 800px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
       .opt {
         display: flex;
         align-items: center;
         justify-content: start;
         width: calc(100% - 170px);
+        @media (max-width: 800px) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        
         span {
           width: 80px;
         }
@@ -149,10 +208,16 @@ const QuesContainer = styled.div`
           outline: none;
           border: none;
           border-bottom: 1px solid;
-          border-radius: 20px;
+          border-radius: 10px;
           background-color: transparent;
           font-size: 15px;
           width: calc(100% - 80px);
+
+          @media (max-width: 800px) {
+            width: 82vw;
+            margin-left: 0;
+          }
+          
         }
       }
       button {
@@ -169,7 +234,13 @@ const QuesContainer = styled.div`
           background-color: #ea5454;
           color: #decdc3;
         }
-      }
+
+        @media (max-width: 800px) {
+        align-self: flex-end;
+          margin: 10px;
+        }
+
+        }
     }
   }
   .add-option {

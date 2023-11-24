@@ -3,15 +3,43 @@ import styled from "styled-components";
 import { publicRequest } from "../../requestMethods";
 const Container = styled.div`
   width: 100%;
+
   h1 {
     color: #ea5454;
     font-size: 40px;
     font-family: "Expletus Sans", sans-serif;
     margin: 30px 0;
   }
+
   h2 {
     margin-top: 20px;
   }
+
+
+  @media (max-width: 450px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .summaryBlock {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    * {
+      margin: 10px;
+    }
+
+  }
+
   .date-component {
     margin-bottom: 20px;
     width: 100%;
@@ -22,14 +50,16 @@ const Container = styled.div`
     span {
       font-size: 20px;
       margin-right: 20px;
-      font-weight: 600px;
+      font-weight: 600;
     }
+
     input {
       background-color: rgba(255, 255, 255, 0.3);
       outline: none;
       border: none;
       padding: 5px 15px;
     }
+
     button {
       text-decoration: none;
       border: 1px solid;
@@ -86,7 +116,7 @@ const Image = styled.div`
   }
 
   .summary {
-    margin: 10px auto 30px;
+    //margin: 10px auto 30px;
   }
 
   a {
@@ -115,7 +145,8 @@ const RoverComponent = ({ roverList }) => {
           `/lessons/missions/Mars_rover/${imageDate}`
         );
         console.log("images", data);
-        setImageList(data?.photos);
+        if(data.length===0) alert("No images found for this date :(");
+        if(data.length>0)setImageList(data?.photos);
       }
     } catch (error) {
       alert(error);

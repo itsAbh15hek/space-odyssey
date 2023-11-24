@@ -39,12 +39,12 @@ const UserContainer = styled.div`
 
   .credentials {
     height: 200px;
-    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 10px 0;
     grid-area: credential;
+
 
     h1 {
       font-family: "Expletus Sans", sans-serif;
@@ -52,12 +52,22 @@ const UserContainer = styled.div`
       color: #ea5455;
       margin-bottom: 5px;
     }
+
     .options {
-      width: 100%;
+      max-width: 410px;
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
+      justify-content: center;
+
       * {
         margin: 10px;
+        min-width: 100px;
+      }
+
+      @media (max-width: 650px) {
+        align-items: center;
+        max-width: 250px;
       }
     }
 
@@ -113,9 +123,10 @@ const UserContainer = styled.div`
 `;
 
 const credentialStyle = {
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
   flexDirection: "column",
+  width:"fit-content"
 };
 
 const Account = () => {
@@ -159,11 +170,11 @@ const Account = () => {
                   <h3>{`@${profileDetils?.username}`}</h3>
                 </div>
                 <div className="options">
-                  {currentUser?.data?.user?.isAdmin && (
-                    <Link to={"/quizes/create-quiz"}>Create Quiz</Link>
-                  )}
                   <Link to={"/user/settings"}>Settings</Link>
                   <a onClick={handleLogout}>Logout</a>
+                  {currentUser?.data?.user?.isAdmin && (
+                      <Link to={"/quizes/create-quiz"}>Create Quiz</Link>
+                  )}
                 </div>
               </div>
               <img

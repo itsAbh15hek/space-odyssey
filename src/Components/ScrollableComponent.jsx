@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 const Container = styled.div`
   margin: 0;
+  max-width: 1080px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.div`
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
