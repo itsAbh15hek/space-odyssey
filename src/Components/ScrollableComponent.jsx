@@ -26,7 +26,7 @@ const Container = styled.div`
     z-index: 1;
     height: auto;
     background: transparent;
-    max-width: 1000px;
+    /* max-width: 1000px; */
   }
 `;
 const ScrollableComponent = ({ children }) => {
