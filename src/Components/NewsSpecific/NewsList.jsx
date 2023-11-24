@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {publicRequest, userRequest} from "../../requestMethods";
-import {useSelector} from "react-redux";
+import { publicRequest, userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100%;
@@ -27,13 +27,11 @@ const Container = styled.div`
     h1 {
       font-size: 1.5rem;
     }
-
   }
 
   @media (max-width: 450px) {
-  padding: 30px 0;
+    padding: 30px 0;
   }
-
 `;
 
 const News = styled.div`
@@ -54,7 +52,7 @@ const News = styled.div`
   @media (max-width: 450px) {
     padding: 30px 15px;
   }
-  
+
   h2 {
     margin: 0px auto 20px;
     color: #ea5454;
@@ -62,7 +60,6 @@ const News = styled.div`
     @media (max-width: 450px) {
       font-size: 1rem;
     }
-  
   }
 
   img {
@@ -98,44 +95,47 @@ const News = styled.div`
 `;
 
 const NewsList = () => {
-    const currentUser = useSelector((state) => state?.user?.currentUser);
-    const [newsList, setNewsList] = useState([]);
-    const getNews = async () => {
-        const {data} = currentUser
-            ? await userRequest.get("news/news/0")
-            : await publicRequest.get("news/news/0");
-        console.log("news", data.data.news);
-        setNewsList(data.data.news);
-    };
+  const currentUser = useSelector((state) => state?.user?.currentUser);
+  const [newsList, setNewsList] = useState([]);
+  const getNews = async () => {
+    const { data } = currentUser
+      ? await userRequest.get("news/news/0")
+      : await publicRequest.get("news/news/0");
+    setNewsList(data.data.news);
+  };
 
-    useEffect(() => {
-        getNews();
-    }, []);
+  useEffect(() => {
+    getNews();
+  }, []);
 
-    return (
-        <Container>
-            <h1>Latest Space News</h1>
-            {newsList[0] && (
-                <div className="news-list">
-                    {newsList?.map((news) => (
-                        <News key={news.id}>
-                            <h2>{news.title}</h2>
-                            <img src={news.image} loading="lazy" onError={(e) => {
-                                e.target.remove()
-                            }}/>
-                            <p className="summary">{news.summary}</p>
-                            <div className="info">
-                                <a href={news.externalUrl} target="_blank">
-                                    Visit Article
-                                </a>
-                                <p>{news.publishedAt.split("T")[0]}</p>
-                            </div>
-                        </News>
-                    ))}
-                </div>
-            )}
-        </Container>
-    );
+  return (
+    <Container>
+      <h1>Latest Space News</h1>
+      {newsList[0] && (
+        <div className="news-list">
+          {newsList?.map((news) => (
+            <News key={news.id}>
+              <h2>{news.title}</h2>
+              <img
+                src={news.image}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.remove();
+                }}
+              />
+              <p className="summary">{news.summary}</p>
+              <div className="info">
+                <a href={news.externalUrl} target="_blank">
+                  Visit Article
+                </a>
+                <p>{news.publishedAt.split("T")[0]}</p>
+              </div>
+            </News>
+          ))}
+        </div>
+      )}
+    </Container>
+  );
 };
 
 export default NewsList;

@@ -45,7 +45,6 @@ const Form = styled.form`
     @media (max-width: 430px) {
       font-size: 30px;
     }
-
   }
 
   span {
@@ -80,13 +79,11 @@ const Button = styled.button`
   }
 `;
 
-
 const ResetPasswordNew = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState({ status: 1, message: "" });
   const token = useLocation().pathname.split("/")[2];
-  console.log("token", token);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -98,7 +95,6 @@ const ResetPasswordNew = () => {
             passwordConfirm: confirmPassword,
           }
         );
-        console.log("first", data);
         setMessage({ status: 0, message: data?.message });
 
         setPassword("");

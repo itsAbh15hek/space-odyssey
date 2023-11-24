@@ -7,13 +7,11 @@ import {
 } from "../quizSlice";
 
 export const getQuizes = async (dispatch, currentUser) => {
-  console.log("currentUser", currentUser);
   dispatch(quizStart());
   try {
     const { data } = currentUser
       ? await userRequest("/quiz/getQuizes/0")
       : await publicRequest("/quiz/getQuizes/0");
-    console.log("quizes", data?.data?.quizes);
     dispatch(getQuizSuccess(data?.data?.quizes));
   } catch (error) {
     dispatch(quizFailure());

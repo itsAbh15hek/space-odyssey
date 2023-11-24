@@ -15,7 +15,6 @@ const Container = styled.div`
     margin-top: 20px;
   }
 
-
   @media (max-width: 450px) {
     h1 {
       font-size: 30px;
@@ -37,7 +36,6 @@ const Container = styled.div`
     * {
       margin: 10px;
     }
-
   }
 
   .date-component {
@@ -144,9 +142,8 @@ const RoverComponent = ({ roverList }) => {
         const { data } = await publicRequest(
           `/lessons/missions/Mars_rover/${imageDate}`
         );
-        console.log("images", data);
-        if(data.length===0) alert("No images found for this date :(");
-        if(data.length>0)setImageList(data?.photos);
+        if (data.length === 0) alert("No images found for this date :(");
+        if (data.length > 0) setImageList(data?.photos);
       }
     } catch (error) {
       alert(error);
@@ -159,10 +156,6 @@ const RoverComponent = ({ roverList }) => {
     setImageDate(date);
     setMaxDate(date);
   }, []);
-
-  useEffect(() => {
-    console.log("date format", imageDate);
-  }, [imageDate]);
 
   return (
     <Container>

@@ -17,7 +17,6 @@ const Main = styled.div`
   }
 `;
 
-
 const Form = styled.form`
   width: 100%;
   max-width: 720px;
@@ -46,7 +45,6 @@ const Form = styled.form`
     @media (max-width: 430px) {
       font-size: 30px;
     }
-
   }
 
   span {
@@ -81,8 +79,6 @@ const Button = styled.button`
   }
 `;
 
-
-
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState({ status: 1, message: "" });
@@ -94,7 +90,6 @@ const ResetPassword = () => {
         email: email,
         link: url,
       });
-      console.log("first", data);
       setMessage({ status: 0, message: data?.message });
       setEmail("");
     } catch (error) {

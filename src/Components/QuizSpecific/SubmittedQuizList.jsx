@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const QuizContainer = styled.div`
   width: 100%;
   display: flex;
@@ -60,12 +59,13 @@ const Quiz = styled(motion.div)`
     margin-top: 5px;
   }
 
-
   @media (max-width: 580px) {
-    a{
+    a {
       padding: 10px;
     }
-    h3,h4,p{
+    h3,
+    h4,
+    p {
       transform: scale(0.9);
     }
   }
@@ -77,6 +77,7 @@ const SubmittedQuizList = ({ quizList }) => {
       <div className="quizList">
         {quizList.map((quiz) => (
           <Quiz
+            key={quiz.topic}
             whileHover={{
               scale: 1.05,
               transition: { duration: 0.1 },

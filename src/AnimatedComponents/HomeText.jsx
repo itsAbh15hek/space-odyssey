@@ -16,7 +16,7 @@ const Container = styled.div`
     background-color: rgba(45, 64, 89, 0.4);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     border-radius: 5px;
 
     @media (max-width: 1000px) {

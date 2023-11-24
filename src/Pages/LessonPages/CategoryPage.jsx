@@ -32,14 +32,12 @@ const CategoryPage = () => {
   const pathname = Location.pathname.split("/")[2];
   const title =
     pathname === "celestialobjects" ? "celestial objects" : pathname;
-  console.log("first", Location.pathname);
   const getData = async () => {
     setStatus(1);
     try {
       const { data } = await publicRequest.get(`/lessons/${pathname}`);
 
       setLessonCategory(data.data);
-      console.log("ma******d", data.data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);

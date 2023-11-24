@@ -29,7 +29,6 @@ const CelestialCategoryPage = () => {
   const Location = useLocation();
   const pathname = Location.pathname.split("/")[3];
 
-  console.log("first", Location.pathname, pathname);
   const getData = async () => {
     setStatus(1);
     try {
@@ -39,7 +38,6 @@ const CelestialCategoryPage = () => {
       const properData = data.data;
 
       setLessonCategory(properData);
-      console.log("check id name", data);
       setStatus(0);
     } catch (error) {
       console.log("error", error);
