@@ -18,6 +18,26 @@ const Container = styled.div`
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
     border-radius: 5px;
+
+    @media (max-width: 1000px) {
+      font-size: 80px;
+      padding: 60px 100px;
+    }
+    @media (max-width: 800px) {
+      font-size: 60px;
+      padding: 60px 60px;
+    }
+    @media (max-width: 570px) {
+      font-size: 40px;
+      padding: 40px 40px;
+    }
+    @media (max-width: 400px) {
+      font-size: 30px;
+      padding: 30px 30px;
+    }
+  }
+  @media (max-width: 1000px) {
+    margin: 20px;
   }
 `;
 const HomeText = ({ el }) => {

@@ -3,14 +3,79 @@ import styled from "styled-components";
 import { publicRequest } from "../../requestMethods";
 const Container = styled.div`
   width: 100%;
+
   h1 {
     color: #ea5454;
     font-size: 40px;
     font-family: "Expletus Sans", sans-serif;
     margin: 30px 0;
   }
+
   h2 {
     margin-top: 20px;
+  }
+
+
+  @media (max-width: 450px) {
+    h1 {
+      font-size: 30px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .summaryBlock {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    * {
+      margin: 10px;
+    }
+
+  }
+
+  .date-component {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    span {
+      font-size: 20px;
+      margin-right: 20px;
+      font-weight: 600;
+    }
+
+    input {
+      background-color: rgba(255, 255, 255, 0.3);
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+    }
+
+    button {
+      text-decoration: none;
+      border: 1px solid;
+      padding: 5px 15px;
+      border-radius: 5px;
+      transition: all 0.25s ease;
+      background-color: transparent;
+      color: #ea5454;
+      height: min-content;
+      margin-left: 15%;
+
+      &:hover {
+        background-color: #ea5454;
+        color: #decdc3;
+      }
+    }
   }
 `;
 
@@ -51,7 +116,7 @@ const Image = styled.div`
   }
 
   .summary {
-    margin: 10px auto 30px;
+    //margin: 10px auto 30px;
   }
 
   a {
@@ -68,19 +133,36 @@ const Image = styled.div`
 `;
 
 const RoverComponent = ({ roverList }) => {
+  const [imageDate, setImageDate] = useState("");
+  const [maxDate, setMaxDate] = useState("");
   const [imageList, setImageList] = useState([]);
-  const getRoverList = async () => {
-    const currentDate = new Date();
-    const date = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`;
-    const { data } = await publicRequest(
-      `/lessons/missions/Mars_rover/${date}`
-    );
-    setImageList(data?.photos);
+
+  const getImages = async () => {
+    try {
+      if (!imageDate) alert("Select a valid date!");
+      if (imageDate) {
+        const { data } = await publicRequest(
+          `/lessons/missions/Mars_rover/${imageDate}`
+        );
+        console.log("images", data);
+        if(data.length===0) alert("No images found for this date :(");
+        if(data.length>0)setImageList(data?.photos);
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   useEffect(() => {
-    getRoverList();
+    const currentDate = new Date();
+    const date = `${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDate()}`;
+    setImageDate(date);
+    setMaxDate(date);
   }, []);
+
+  useEffect(() => {
+    console.log("date format", imageDate);
+  }, [imageDate]);
 
   return (
     <Container>
@@ -94,7 +176,19 @@ const RoverComponent = ({ roverList }) => {
         </div>
       ))}
       <h1>Pictures clicked by Rovers</h1>
-      {imageList[0] && (
+      <label htmlFor="date" className="date-component">
+        <span>Select Date: </span>
+        <input
+          value={imageDate}
+          type="date"
+          max={maxDate}
+          onChange={(e) => setImageDate(e.target.value)}
+        />
+        <button type="button" onClick={(e) => getImages()}>
+          Fetch Images
+        </button>
+      </label>
+      {imageList?.length > 0 && (
         <div className="news-list">
           {imageList?.map((image) => (
             <Image key={image.id}>

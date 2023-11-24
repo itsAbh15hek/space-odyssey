@@ -34,6 +34,13 @@ const Main = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
+
+    .highlight {
+      color: #ea5455;
+      font-weight: bold;
+      padding: 5px;
+      border-radius: 5px;
+    }
   }
 `;
 const QuestionContiner = styled.div`
@@ -43,6 +50,8 @@ const QuestionContiner = styled.div`
 
   p {
     color: #dcdcdc;
+    padding: 0 5px;
+    border-radius: 3px;
   }
 
 
@@ -96,7 +105,7 @@ const ViewQuiz = () => {
                 <h1>{quizDetails?.topic}</h1>
                 <div className="details">
                     <p>{`Date: ${quizDetails?.quizDate?.split("T")[0]}`}</p>
-                    <p>{`Score: ${quizDetails?.marksObtained}`}</p>
+                    <p className="highlight">{`Score: ${quizDetails?.marksObtained}`}</p>
                 </div>
                 {/*<h2>Questions</h2>*/}
                 <QuestionContiner>
@@ -106,8 +115,18 @@ const ViewQuiz = () => {
                         <QuizOptionsAnswersContainer>
                             {/*<h4>Options</h4>*/}
                             <div>
-                                {qna?.options?.map((opt, index) => (
-                                    <p>{String.fromCharCode(97 + index)}. {opt}</p>))}
+                                {qna?.options?.map((opt, i) => {
+                                    const alphabet = String.fromCharCode(97 + i);
+                                    let style;
+
+                                    if (quizDetails?.choosenOptions[index])
+                                        style = {
+                                            backgroundColor:
+                                                (alphabet === qna?.correctOption) ? "#008000b3" :
+                                                    (alphabet === quizDetails?.choosenOptions[index]) ? "#ff000085" : ""
+                                        }
+                                    return <p style={style}>{alphabet}. {opt}</p>
+                                })}
                             </div>
                             <div className="option-div">
                                 <p>{`Correct Option: ${qna?.correctOption}`}</p>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 const Main = styled.div`
   height: calc(95vh - 200px);
+  max-width: 1560px;
   width: 98vw;
   position: relative;
   display: flex;

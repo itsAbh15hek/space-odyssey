@@ -9,6 +9,9 @@ const Page = styled.div`
   flex-direction: column;
   align-items: ${(props) => props.alignment};
   justify-content: center;
+  @media (max-width: 1000px) {
+    height: ${`${window.innerHeight}px`};
+  }
 `;
 const HomeTextPage = ({ children, alignment }) => {
   return <Page alignment={alignment}>{children}</Page>;
