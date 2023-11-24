@@ -44,7 +44,19 @@ const UserContainer = styled.div`
     justify-content: space-between;
     padding: 10px 0;
     grid-area: credential;
+    
 
+    .credentialsInnerDiv {
+      display: inline-flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: fit-content;
+
+      @media (max-width: 580px) {
+        align-items: center;
+      }
+      
+    }
 
     h1 {
       font-family: "Expletus Sans", sans-serif;
@@ -67,7 +79,7 @@ const UserContainer = styled.div`
 
       @media (max-width: 650px) {
         align-items: center;
-        max-width: 250px;
+        max-width: 270px;
       }
     }
 
@@ -122,13 +134,6 @@ const UserContainer = styled.div`
   }
 `;
 
-const credentialStyle = {
-  display: "inline-flex",
-  alignItems: "center",
-  flexDirection: "column",
-  width:"fit-content"
-};
-
 const Account = () => {
   const currentUser = useSelector((state) => state?.user?.currentUser);
   const navigate = useNavigate();
@@ -165,7 +170,7 @@ const Account = () => {
           <ScrollableComponent>
             <UserContainer>
               <div className="credentials">
-                <div style={credentialStyle}>
+                <div className="credentialsInnerDiv">
                   <h1>{profileDetils?.name}</h1>
                   <h3>{`@${profileDetils?.username}`}</h3>
                 </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../Components/Header";
 import staryBG from "../../assets/staryBG.mp4";
@@ -17,7 +17,6 @@ const Main = styled.div`
     object-fit: cover;
   }
 `;
-
 
 const Form = styled.form`
   width: 100%;
@@ -49,7 +48,6 @@ const Form = styled.form`
       font-weight: lighter;
       margin: 0;
     }
-
   }
   span {
     margin: 10px;
@@ -77,7 +75,9 @@ const Button = styled.button`
   font-size: 20px;
 
   font-family: "Expletus Sans", sans-serif;
-
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 430px) {
     padding: 10px 40px;
     margin-top: -0px;
@@ -85,11 +85,13 @@ const Button = styled.button`
 `;
 const DeleteAccount = () => {
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      deleteUser(dispatch, password);
+      await deleteUser(dispatch, password);
+      navigate("/login");
     } catch (error) {}
   };
   return (

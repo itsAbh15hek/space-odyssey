@@ -33,7 +33,6 @@ import CreateQuiz from "./Pages/QuizPages/CreateQuiz";
 
 function App() {
   const currentUser = useSelector((state) => state?.user?.currentUser);
-  console.log("App", currentUser);
   userRequest.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${currentUser?.token}`;

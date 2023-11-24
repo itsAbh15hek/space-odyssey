@@ -21,7 +21,6 @@ import Mercury from "../ModelComponents/Mercury";
 import Venus from "../ModelComponents/Venus";
 import Earth from "../ModelComponents/Earth";
 import Mars from "../ModelComponents/Mars";
-import Moon from "../ModelComponents/Moon";
 import Jupiter from "../ModelComponents/Jupiter";
 import Saturn from "../ModelComponents/Saturn";
 import Neptune from "../ModelComponents/Neptune";
@@ -50,7 +49,6 @@ const MainCanvas = () => {
           </Scroll>
         </ScrollControls>
       </Canvas>
-      <Loader />
     </>
   );
 };

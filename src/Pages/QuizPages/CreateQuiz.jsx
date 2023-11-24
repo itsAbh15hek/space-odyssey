@@ -11,7 +11,7 @@ import Loader from "../../Components/Loader";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
-  
+
   video {
     position: absolute;
     width: 100%;
@@ -42,7 +42,6 @@ const Container = styled.form`
     label {
       transform: scale(0.9);
     }
-
   }
 
   .add-ques {
@@ -98,9 +97,6 @@ const Container = styled.form`
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
-      
-    
-
     }
 
     span {
@@ -119,11 +115,10 @@ const Container = styled.form`
       font-size: 15px;
       width: 100%;
       @media (max-width: 800px) {
-        margin-left:0;
+        margin-left: 0;
       }
     }
   }
-
 `;
 const QuesContainer = styled.div`
   display: flex;
@@ -144,7 +139,7 @@ const QuesContainer = styled.div`
       align-items: flex-start;
       gap: 10px;
     }
-    
+
     span {
       font-size: 30px;
       color: #ea5454;
@@ -160,9 +155,8 @@ const QuesContainer = styled.div`
       font-size: 15px;
       width: 100%;
       @media (max-width: 800px) {
-        margin-left:0;
+        margin-left: 0;
       }
-      
     }
   }
 
@@ -174,9 +168,9 @@ const QuesContainer = styled.div`
     width: 100%;
 
     @media (max-width: 800px) {
-      margin-left:0;
+      margin-left: 0;
     }
-    
+
     li {
       display: flex;
       align-items: center;
@@ -187,7 +181,7 @@ const QuesContainer = styled.div`
         flex-direction: column;
         align-items: flex-start;
       }
-      
+
       .opt {
         display: flex;
         align-items: center;
@@ -198,7 +192,7 @@ const QuesContainer = styled.div`
           align-items: flex-start;
           gap: 10px;
         }
-        
+
         span {
           width: 80px;
         }
@@ -217,7 +211,6 @@ const QuesContainer = styled.div`
             width: 82vw;
             margin-left: 0;
           }
-          
         }
       }
       button {
@@ -236,11 +229,10 @@ const QuesContainer = styled.div`
         }
 
         @media (max-width: 800px) {
-        align-self: flex-end;
+          align-self: flex-end;
           margin: 10px;
         }
-
-        }
+      }
     }
   }
   .add-option {
@@ -358,7 +350,6 @@ const CreateQuiz = () => {
     setStatus(1);
     try {
       const { data } = await userRequest.post("/quiz/createQuiz", finalData);
-      console.log("res,,,,,", data);
       setStatus(0);
     } catch (error) {
       console.log(error);

@@ -30,7 +30,6 @@ const CelestialObjects = () => {
   const pathname = Location.pathname.split("/")[2];
   const title =
     pathname === "celestialobjects" ? "celestial objects" : pathname;
-  console.log("first", Location.pathname);
   const getData = async () => {
     setStatus(1);
     try {
@@ -43,7 +42,6 @@ const CelestialObjects = () => {
       //   properData.unshift({ DisplayName: "Solar System", id: "solarsystem" });
       // }
       setLessonCategory(properData);
-      console.log("ma******d", properData);
       setStatus(0);
     } catch (error) {
       console.log("error", error);

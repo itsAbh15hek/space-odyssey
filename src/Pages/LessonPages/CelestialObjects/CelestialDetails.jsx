@@ -39,8 +39,8 @@ const Main = styled.div`
       width: max-content;
       flex-direction: column;
     }
-    
-    .value{
+
+    .value {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -87,11 +87,8 @@ const CelestialDetails = () => {
   const getData = async () => {
     setStatus(1);
     try {
-      console.log("first", pathname, path);
-
       const { data } = await publicRequest.get(`${pathname}`);
       setItemData(data.data);
-      console.log("data", data);
       setStatus(0);
     } catch (error) {
       console.log(error);
@@ -134,7 +131,10 @@ const CelestialDetails = () => {
                 Object.entries(itemData?.physicalData).map((el) => (
                   <p key={el[0]}>
                     <span>{`${el[0]} :`} </span>{" "}
-                    <span className="value" dangerouslySetInnerHTML={{ __html: el[1] }} />
+                    <span
+                      className="value"
+                      dangerouslySetInnerHTML={{ __html: el[1] }}
+                    />
                   </p>
                 ))}
             </div>

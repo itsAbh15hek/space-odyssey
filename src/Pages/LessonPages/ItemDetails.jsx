@@ -10,7 +10,6 @@ import Loader from "../../Components/Loader";
 import ISSComponents from "../../Components/MissionSpecific/ISSComponents";
 import RoverComponent from "../../Components/MissionSpecific/RoverComponent";
 
-
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -22,7 +21,7 @@ const Main = styled.div`
     object-fit: cover;
   }
 
-  h3{
+  h3 {
     align-self: baseline;
     color: #ea5454f9;
     margin: 0;
@@ -60,7 +59,6 @@ const Li = styled.p`
   margin: 10px 0 0 0;
 `;
 
-
 const ItemDetails = () => {
   const [status, setStatus] = useState(-1);
   const [itemData, setItemData] = useState({});
@@ -71,11 +69,8 @@ const ItemDetails = () => {
   const getData = async () => {
     setStatus(1);
     try {
-      console.log("first");
-
       const { data } = await publicRequest.get(`${pathname}`);
       setItemData(data.data);
-      console.log("data", data);
       setStatus(0);
     } catch (error) {
       console.log(error);
@@ -96,12 +91,24 @@ const ItemDetails = () => {
               {itemData?.englishName ? itemData.englishName : path}
             </Heading>
             {itemData?.image && <Img src={itemData.image} alt="" />}
-            {itemData?.info && <Info>{itemData.info.split("\n").map(fact=><Li>{fact}</Li>)}</Info>}
+            {itemData?.info && (
+              <Info>
+                {itemData.info.split("\n").map((fact) => (
+                  <Li>{fact}</Li>
+                ))}
+              </Info>
+            )}
             <h3>Facts</h3>
-            {itemData?.facts && <Info>{itemData.facts.map(fact=><Li>{fact}</Li>)}</Info>}
+            {itemData?.facts && (
+              <Info>
+                {itemData.facts.map((fact) => (
+                  <Li>{fact}</Li>
+                ))}
+              </Info>
+            )}
             {path === "ISS" && <ISSComponents />}
             {path === "Mars_rover" && (
-                <RoverComponent roverList={itemData.marsAdditional} />
+              <RoverComponent roverList={itemData.marsAdditional} />
             )}
           </ScrollableComponent>
         )}

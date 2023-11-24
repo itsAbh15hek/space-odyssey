@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../Components/Header";
 import staryBG from "../../assets/staryBG.mp4";
@@ -161,6 +161,7 @@ const EditProfile = () => {
   const [allAgencies, setAllAgencies] = useState([]);
   const [following, setFollowing] = useState([]);
   const [unfollowing, setUnfollowing] = useState([]);
+  const navigate = useNavigate();
   const getAllAgencies = async () => {
     const { data } = await publicRequest("/news/spaceAgencies");
     setAllAgencies(data?.data?.agencies);
@@ -192,12 +193,13 @@ const EditProfile = () => {
     unfollowing([...unfollowing, agency]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateUser(dispatch, {
+    await updateUser(dispatch, {
       name: name,
       follows: following?.map((el) => el.name),
     });
+    navigate("/user");
   };
 
   return (

@@ -107,7 +107,6 @@ const TakeQuiz = () => {
   const [answers, setAnswers] = useState([]);
   const getQuiz = async () => {
     const { data } = await publicRequest(`/quiz/giveQuiz/${id}`);
-    console.log("getauiz", data?.data?.quiz);
     setQuiz(data?.data?.quiz);
   };
 
@@ -116,7 +115,6 @@ const TakeQuiz = () => {
     if (String.fromCharCode(97 + optInd) === data[quesInd])
       data[quesInd] = null;
     else data[quesInd] = String.fromCharCode(97 + optInd);
-    console.log("first", String.fromCharCode(97 + optInd), data[quesInd], data);
     setAnswers(data);
   };
 
@@ -142,9 +140,6 @@ const TakeQuiz = () => {
     });
     setAnswers(data);
   }, [quiz]);
-  useEffect(() => {
-    console.log("answers", answers);
-  }, [answers]);
 
   return (
     <Main>

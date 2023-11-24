@@ -10,6 +10,7 @@ import { login } from "../redux/apiCalls/apiCalls";
 import Loader from "../Components/Loader";
 import { clearProfile } from "../redux/profileSlice";
 import { clearQuizes } from "../redux/quizSlice";
+import { errorReset } from "../redux/userSlice";
 const Main = styled.div`
   height: 100vh;
   width: 100vw;
@@ -128,7 +129,11 @@ const Login = () => {
   };
   useEffect(() => {
     if (currentUser) navigate("/user");
+    dispatch(errorReset());
   }, [currentUser]);
+  useEffect(() => {
+    dispatch(errorReset());
+  }, []);
 
   return (
     <Main>
