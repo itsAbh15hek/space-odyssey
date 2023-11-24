@@ -34,6 +34,7 @@ export const updateUser = async (dispatch, userData) => {
       ...userData,
     });
     dispatch(updateSuccess(res.data));
+    confirm("Profile updated successfully!");
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));
   }
