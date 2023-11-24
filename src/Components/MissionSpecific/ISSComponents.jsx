@@ -77,7 +77,7 @@ const People = styled.div`
   }
 
   .issPeopleImages {
-    width: 80vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
