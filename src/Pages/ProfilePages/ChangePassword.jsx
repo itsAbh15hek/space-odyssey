@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../Components/Header";
 import staryBG from "../../assets/staryBG.mp4";
@@ -9,6 +9,9 @@ import { userRequest } from "../../requestMethods";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePassword } from "../../redux/apiCalls/apiCalls";
 import Loader from "../../Components/Loader";
+import { logOut } from "../../redux/userSlice";
+import { clearProfile } from "../../redux/profileSlice";
+import { clearQuizes } from "../../redux/quizSlice";
 
 const Main = styled.div`
   height: 100vh;
@@ -77,8 +80,10 @@ const Button = styled.button`
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
-
   font-family: "Expletus Sans", sans-serif;
+  &:hover {
+    cursor: pointer;
+  }
 
   @media (max-width: 430px) {
     padding: 10px 40px;
@@ -93,18 +98,20 @@ const ChangePassword = () => {
   const isFetching = useSelector((state) => state.user.isFetching);
   const errorMsg = useSelector((state) => state.user.errorMsg);
   const error = useSelector((state) => state.user.error);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      updatePassword(dispatch, {
+      await updatePassword(dispatch, {
         password: oldPassword,
         newPassword: password,
         passwordConfirm: confirmPassword,
       });
-      setOldPassword("");
-      setPassword("");
-      setConfirmPassword("");
+      navigate("/user");
+      dispatch(logOut());
+      dispatch(clearProfile());
+      dispatch(clearQuizes());
     } else {
       setOldPassword("");
     }

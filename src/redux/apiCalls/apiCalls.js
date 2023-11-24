@@ -58,6 +58,7 @@ export const deleteUser = async (dispatch, password) => {
     const res = await userRequest.post("/users/deleteMe", {
       password: password,
     });
+    confirm("Your account has been deleted");
     dispatch(deleteUserSuccess());
   } catch (error) {
     dispatch(userFailure(error?.response?.data?.message));

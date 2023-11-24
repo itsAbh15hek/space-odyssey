@@ -73,7 +73,9 @@ const Button = styled.button`
   font-size: 20px;
 
   font-family: "Expletus Sans", sans-serif;
-
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 430px) {
     padding: 10px 40px;
   }

@@ -16,25 +16,30 @@ const LoadingContainer = styled.div`
   font-size: 24px;
   span {
     width: 100%;
+    display: block;
     font-family: "Orbitron", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 20px;
+    letter-spacing: 40px;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 20px;
+    padding-left: 40px;
   }
   h1 {
     font-family: "Expletus Sans", sans-serif;
     font-size: 60px;
     color: #ea5455;
     margin-bottom: 40px;
+    text-align: center;
   }
 `;
 
 const ProgressBar = styled.div`
-  width: 100%;
+  width: calc(100% - 40px);
   height: 20px;
   background-color: #decdc3;
   border-radius: 20px;
+  margin: 0 20px;
   margin-top: 20px;
 
   .progress {

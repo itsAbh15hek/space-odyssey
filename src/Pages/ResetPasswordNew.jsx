@@ -4,7 +4,7 @@ import NavBar from "../Components/NavBar";
 import staryBG from "../assets/staryBG.mp4";
 import Header from "../Components/Header";
 import MainContainer from "../Components/MainContainer";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
 const Main = styled.div`
   height: 100vh;
@@ -71,9 +71,10 @@ const Button = styled.button`
   background-color: #ea5455;
   border-radius: 40px;
   font-size: 20px;
-
   font-family: "Expletus Sans", sans-serif;
-
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 430px) {
     padding: 10px 40px;
   }
@@ -84,6 +85,7 @@ const ResetPasswordNew = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState({ status: 1, message: "" });
   const token = useLocation().pathname.split("/")[2];
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -96,9 +98,10 @@ const ResetPasswordNew = () => {
           }
         );
         setMessage({ status: 0, message: data?.message });
-
+        confirm("Password Reset Successful!");
         setPassword("");
         setConfirmPassword("");
+        // navigate("/login");
       } else {
         setMessage({ status: -1, message: "Passwords do not match" });
 
@@ -122,13 +125,13 @@ const ResetPasswordNew = () => {
         <Form action="" onSubmit={(e) => handleSubmit(e)} className="register">
           <h1>Reset Password</h1>
           <Input
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
           <Input
-            type="text"
+            type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"

@@ -19,20 +19,22 @@ const Main = styled(motion.div)`
     text-align: center;
     letter-spacing: 30px;
     font-size: 50px;
-
     font-family: "Orbitron", sans-serif;
+    padding-left: 30px;
   }
 
   @media (max-width: 1000px) {
     h1 {
       font-size: 2.5rem;
       letter-spacing: 25px;
+      padding-left: 25px;
     }
   }
   @media (max-width: 770px) {
     h1 {
       font-size: 35px;
       letter-spacing: 20px;
+      padding-left: 20px;
     }
   }
 
@@ -41,6 +43,7 @@ const Main = styled(motion.div)`
     h1 {
       //font-size: 30px;
       letter-spacing: 1px;
+      padding-left: 1px;
     }
   }
 
@@ -49,6 +52,7 @@ const Main = styled(motion.div)`
     h1 {
       font-size: 30px;
       letter-spacing: 1px;
+      padding-left: 1px;
     }
   }
   @media (max-width: 370px) {
