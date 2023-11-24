@@ -109,12 +109,14 @@ const RoverComponent = ({ roverList }) => {
 
   const getImages = async () => {
     try {
-      const { data } = await publicRequest(
-        `/lessons/missions/Mars_rover/${imageDate}`
-      );
-      if (data.images === undefined) alert("No images found for this date!");
-      console.log("images", data?.photos);
-      if (data.images !== undefined) setImageList(data?.photos);
+      if (!imageDate) alert("Select a valid date!");
+      if (imageDate) {
+        const { data } = await publicRequest(
+          `/lessons/missions/Mars_rover/${imageDate}`
+        );
+        console.log("images", data);
+        setImageList(data?.photos);
+      }
     } catch (error) {
       alert(error);
     }
@@ -126,6 +128,10 @@ const RoverComponent = ({ roverList }) => {
     setImageDate(date);
     setMaxDate(date);
   }, []);
+
+  useEffect(() => {
+    console.log("date format", imageDate);
+  }, [imageDate]);
 
   return (
     <Container>
@@ -151,7 +157,7 @@ const RoverComponent = ({ roverList }) => {
           Fetch Images
         </button>
       </label>
-      {imageList[0] && (
+      {imageList?.length > 0 && (
         <div className="news-list">
           {imageList?.map((image) => (
             <Image key={image.id}>
