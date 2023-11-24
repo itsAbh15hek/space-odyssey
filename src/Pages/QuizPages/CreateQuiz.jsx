@@ -7,6 +7,7 @@ import Header from "../../Components/Header";
 import ScrollableComponent from "../../Components/ScrollableComponent";
 import { userRequest } from "../../requestMethods";
 import Loader from "../../Components/Loader";
+import { useNavigate } from "react-router-dom";
 
 const Main = styled.div`
   height: 100vh;
@@ -288,6 +289,7 @@ const QuesContainer = styled.div`
 `;
 
 const CreateQuiz = () => {
+  const navigate = useNavigate();
   const [topic, setTopic] = useState("");
   const [status, setStatus] = useState(0);
   const [quizData, setQuizData] = useState([
@@ -351,6 +353,7 @@ const CreateQuiz = () => {
     try {
       const { data } = await userRequest.post("/quiz/createQuiz", finalData);
       setStatus(0);
+      navigate("/quizes");
     } catch (error) {
       console.log(error);
       alert(`Error: ${error?.response?.data?.error?.message}`);
