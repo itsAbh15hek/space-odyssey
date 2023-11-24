@@ -6,13 +6,14 @@ const Heading = styled.h1`
   margin: 20px auto;
   font-size: 50px;
   text-transform: capitalize;
-
+  text-align: center;
+  
   @media (max-width: 800px) {
-    font-size: 40px;
+    font-size: 35px;
     margin: 10px;
   }
   @media (max-width: 350px) {
-    font-size: 33px;
+    font-size: 30px;
   }
 
 `;

@@ -22,8 +22,6 @@ const Main = styled.div`
 `;
 
 const Form = styled.form`
-  height: 80%;
-  width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,13 +33,19 @@ const Form = styled.form`
     font-size: 60px;
     color: #ea5455;
     margin-bottom: 30px;
+    text-align: center;
+
+    @media (max-width: 600px) {
+      font-size: 40px;
+    }
+    
   }
-  @media (max-width: 1030px) {
-    transform: scale(0.75);
-  }
+  //@media (max-width: 1030px) {
+  //  transform: scale(0.75);
+  //}
 `;
 const Input = styled.input`
-  width: 600px;
+  width: 100%;
   padding: 10px 30px;
   border-radius: 30px;
   font-size: 20px;
