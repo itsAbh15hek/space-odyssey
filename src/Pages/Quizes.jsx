@@ -34,7 +34,7 @@ const Main = styled.div`
     }
     
     @media (max-width: 375px) {
-      font-size: 30px;
+      font-size: 40px;
     }
   }
 `;
@@ -49,24 +49,25 @@ const Quizes = () => {
     getQuizes(dispatch, currentUser);
   }, [currentUser]);
 
-  return (
-    <Main>
-      <video src={staryBG} autoPlay loop muted></video>
-      <Header />
-      <MainContainer>
-        <ScrollableComponent>
-          <h1>Take a Quiz Now!</h1>
-          {quizList?.map((quiz) => (
-            <ListItem
-              name={quiz.topic}
-              path={currentUser ? `/quizes/take-quiz/${quiz._id}` : "/login"}
-              image={
-                "https://thumbs.dreamstime.com/z/question-mark-seamless-pattern-trivia-poster-design-template-quiz-loading-page-random-punctuation-marks-background-vector-182361333.jpg?w=768"
-              }
-            />
-          ))}
-        </ScrollableComponent>
-      </MainContainer>
+    return (
+        <Main>
+            <video src={staryBG} autoPlay loop muted></video>
+            <Header/>
+            <MainContainer>
+                <ScrollableComponent>
+                    <h1>Take a Quiz Now!</h1>
+                    {quizList?.map((quiz) => (
+                        <ListItem
+                            style={{height: "50px", maxWidth: "400px"}}
+                            name={quiz.topic}
+                            path={`/quizes/take-quiz/${quiz._id}`}
+                            image={
+                                "https://thumbs.dreamstime.com/z/question-mark-seamless-pattern-trivia-poster-design-template-quiz-loading-page-random-punctuation-marks-background-vector-182361333.jpg?w=768"
+                            }
+                        />
+                    ))}
+                </ScrollableComponent>
+            </MainContainer>
 
             <NavBar/>
         </Main>

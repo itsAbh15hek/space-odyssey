@@ -39,6 +39,13 @@ const Main = styled.div`
       width: max-content;
       flex-direction: column;
     }
+    
+    .value{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
   }
 `;
 
@@ -127,7 +134,7 @@ const CelestialDetails = () => {
                 Object.entries(itemData?.physicalData).map((el) => (
                   <p key={el[0]}>
                     <span>{`${el[0]} :`} </span>{" "}
-                    <span dangerouslySetInnerHTML={{ __html: el[1] }} />
+                    <span className="value" dangerouslySetInnerHTML={{ __html: el[1] }} />
                   </p>
                 ))}
             </div>
