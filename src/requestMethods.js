@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://spaceodysseyapi-xffsa.ondigitalocean.app/";
+const BASE_URL = "https://space-odyssey.onrender.com";
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
