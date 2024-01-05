@@ -77,7 +77,7 @@ const People = styled.div`
   }
 
   .issPeopleImages {
-    width: 80vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -128,7 +128,7 @@ const ISSComponents = () => {
   return (
     <Container>
       <RealTime>
-        <h2>Real-Time Data of the ISS</h2>
+        <h2>Real-Time Location of ISS</h2>
         <h4>Source: api.wheretheiss.at</h4>
         <div>
           {Object.entries(realTime).map((el) => (
